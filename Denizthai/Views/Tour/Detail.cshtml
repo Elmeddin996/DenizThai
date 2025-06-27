@@ -1,0 +1,232 @@
+﻿@model Tour
+
+<div class="marque-wrapper style-2">
+    <div dir="rtl" class="swiper text-slider-2">
+        <div class="swiper-wrapper slide-transtion">
+            <div class="swiper-slide brand-slide-element">
+                <div class="marque-text">
+                    <img src="~/assets/img/marque.png" alt="img">
+                    <h3>@Model.LocationAz</h3>
+                </div>
+            </div>
+            <div class="swiper-slide brand-slide-element">
+                <div class="marque-text">
+                    <img src="~/assets/img/marque.png" alt="img">
+                    <h3>@Model.Categorie.NameAz</h3>
+                </div>
+            </div>
+            <div class="swiper-slide brand-slide-element">
+                <div class="marque-text">
+                    <img src="~/assets/img/marque.png" alt="img">
+                    <h3>@Model.NameAz</h3>
+                </div>
+            </div>
+            <div class="swiper-slide brand-slide-element">
+                <div class="marque-text">
+                    <img src="~/assets/img/marque.png" alt="img">
+                    <h3>@Model.LocationAz</h3>
+                </div>
+            </div>
+            <div class="swiper-slide brand-slide-element">
+                <div class="marque-text">
+                    <img src="~/assets/img/marque.png" alt="img">
+                    <h3>@Model.Categorie.NameAz</h3>
+                </div>
+            </div>
+            <div class="swiper-slide brand-slide-element">
+                <div class="marque-text">
+                    <img src="~/assets/img/marque.png" alt="img">
+                    <h3>@Model.NameAz</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="tour-details-section section-padding">
+    <div class="container">
+        <div class="tour-details-wrapper">
+            <div class="row g-5">
+                <div class="col-12">
+                    <div class="tour-details-items">
+                        <div class="row align-items-center mb-5">
+                            <div class="col-lg-6 mb-4 mb-lg-0">
+                                <div class="details-thumb">
+                                    <img src="~/uploads/tours/@Model.Image" alt="img" class="img-fluid rounded shadow" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="details-content">
+                                    <h2 class="fw-bold mb-3">@Model.NameAz</h2>
+                                    <h4 class="fw-bold mb-3">@Model.Categorie.NameAz</h4>
+                                    <h6><strong>Qiymət:</strong> <del>@Model.Price </del></h6>
+
+                                    <h5><strong>Endirimli Qiymət:</strong> <span class="text-danger">@Model.DiscountedPrice</span></h5>
+
+                                    <span class="location-icon d-block mb-2 text-muted">
+                                        <i class="far fa-map-marker-alt"></i>
+                                        @Model.LocationAz
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        @if (Model.TourImages != null && Model.TourImages.Any())
+                        {
+                            <div class="swiper mySwiper mb-5" style="padding: 20px 0;">
+                                <div class="swiper-wrapper">
+                                    @foreach (var image in Model.TourImages)
+                                    {
+                                        <div class="swiper-slide">
+                                            <img src="~/uploads/tours/@image.ImageName" alt="Tour Image" style="width:100%; height:350px; object-fit:cover; border-radius:10px;" />
+                                        </div>
+                                    }
+                                </div>
+
+                                <!-- Navigation buttons -->
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+
+                                <!-- Pagination dots -->
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        }
+                        <div class="details-content">
+                          
+                           
+                            <p class="mb-3">
+                                We offer carefully curated destinations and tours that capture the true essence of location, ensuring you experience. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteradution in some form by injected humour, or randomised words which don't look even slightly believable. If you are going There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteradution in some form by injected humour, or randomised words which don't look even slightly believable. If you are going
+                            </p>
+                            <p class="mb-3">
+                                If you are going There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteradution in some form by injected humour, or randomised words which don't look even slightly believable. If you are going
+                            </p>
+                            <p>
+                                We offer carefully curated destinations and tours that capture the true essence of location, ensuring you experience. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteradution in some form by injected humour, or randomised words which don't look even slightly believable. If you are going There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteradution in some form by injected humour, or randomised words which don't look even slightly believable. If you are going
+                            </p>
+                            <div class="destination-list-item">
+                                <h4>
+                                    Experience the Difference
+                                </h4>
+                                <div class="destination-list">
+                                    <ul class="list">
+                                        <li>
+                                            <i class="flaticon-check"></i>
+                                            Trusted, Local Travel Experts
+                                        </li>
+                                        <li>
+                                            <i class="flaticon-check"></i>
+                                            Flexible, Hassle-Free Bookings
+                                        </li>
+                                        <li>
+                                            <i class="flaticon-check"></i>
+                                            Real-Time Itinerary Updates
+                                        </li>
+                                    </ul>
+                                    <ul class="list">
+                                        <li>
+                                            <i class="flaticon-check"></i>
+                                            Flexible Cancellation Policies
+                                        </li>
+                                        <li>
+                                            <i class="flaticon-check"></i>
+                                            Customized Travel Experiences
+                                        </li>
+                                        <li>
+                                            <i class="flaticon-check"></i>
+                                            Exclusive Travel Deals
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="tour-details-icon">
+                                <div class="row g-5 justity-content-end">
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="icon">
+                                            <i class="flaticon-connection"></i>
+                                            <h5>Use Free Wi-Fi</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="icon">
+                                            <i class="flaticon-cyber-security"></i>
+                                            <h5>Special Security</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="icon">
+                                            <i class="flaticon-guide"></i>
+                                            <h5>Special Guiding</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="icon">
+                                            <i class="flaticon-gym"></i>
+                                            <h5>Gym Center</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="icon">
+                                            <i class="flaticon-cycling"></i>
+                                            <h5>Special Security</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="icon">
+                                            <i class="flaticon-hiking"></i>
+                                            <h5>Special Security</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="icon">
+                                            <i class="flaticon-googles"></i>
+                                            <h5>Swimming & Fishing</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="icon">
+                                            <i class="flaticon-solar-system"></i>
+                                            <h5>Solar Energy Syster</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="map-area">
+                                <h3>
+                                </h3>
+                                <div class="google-map">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d384053.6970976869!2d98.04093017502835!3d7.839969707638571!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x305031e2c462524f%3A0xe9ca9a85063dba21!2sPhuket%2C%20Thailand!5e1!3m2!1sen!2saz!4v1750102513194!5m2!1sen!2saz" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 3,
+            spaceBetween: 20,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            mousewheel: true,
+            keyboard: true,
+            grabCursor: true,
+            breakpoints: {
+                0: { slidesPerView: 1 },
+                576: { slidesPerView: 2 },
+                992: { slidesPerView: 3 }
+            }
+        });
+    });
+</script>

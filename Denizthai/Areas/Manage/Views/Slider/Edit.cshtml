@@ -1,0 +1,77 @@
+﻿@model Slider
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h1>Edit</h1>
+        <form asp-action="edit" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="TitleAz">Title Az</label>
+                <input class="form-control" asp-for="TitleAz">
+                <span class="text-danger" asp-validation-for="TitleAz"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TitleEn">Title En</label>
+                <input class="form-control" asp-for="TitleEn">
+                <span class="text-danger" asp-validation-for="TitleEn"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TitleRu">Title Ru</label>
+                <input class="form-control" asp-for="TitleRu">
+                <span class="text-danger" asp-validation-for="TitleRu"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DescriptionAz">Description Az</label>
+                <textarea class="form-control" asp-for="DescriptionAz" rows="2"></textarea>
+                <span class="text-danger" asp-validation-for="DescriptionAz"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescriptionEn">Description En</label>
+                <textarea class="form-control" asp-for="DescriptionEn" rows="2"></textarea>
+                <span class="text-danger" asp-validation-for="DescriptionEn"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescriptionRu">Description Ru</label>
+                <textarea class="form-control" asp-for="DescriptionRu" rows="2"></textarea>
+                <span class="text-danger" asp-validation-for="DescriptionRu"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ButtonTextAz">BtnText Az</label>
+                <input class="form-control" asp-for="ButtonTextAz">
+                <span class="text-danger" asp-validation-for="ButtonTextAz"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ButtonTextEn">BtnText En</label>
+                <input class="form-control" asp-for="ButtonTextEn">
+                <span class="text-danger" asp-validation-for="ButtonTextEn"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ButtonTextRu">BtnText Ru</label>
+                <input class="form-control" asp-for="ButtonTextRu">
+                <span class="text-danger" asp-validation-for="ButtonTextRu"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BtnUrl">BtnUrl</label>
+                <input class="form-control" asp-for="BtnUrl">
+                <span class="text-danger" asp-validation-for="BtnUrl"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ImageFile">Image</label>
+                <input class="form-control" asp-for="ImageFile">
+                <span class="text-danger" asp-validation-for="ImageFile"></span>
+
+            </div>
+          
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+@* @section Scripts {
+    @Html.Partial("_ValidationScriptsPartial")
+} *@

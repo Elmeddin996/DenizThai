@@ -1,0 +1,108 @@
+﻿@model Tour
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h1>Edit</h1>
+        <form asp-action="edit" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="NameAz">NameAz</label>
+                <input class="form-control" asp-for="NameAz">
+                <span class="text-danger" asp-validation-for="NameAz"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NameRu">NameRu</label>
+                <input class="form-control" asp-for="NameRu">
+                <span class="text-danger" asp-validation-for="NameRu"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NameEn">NameEn</label>
+                <input class="form-control" asp-for="NameEn">
+                <span class="text-danger" asp-validation-for="NameEn"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CategorieId">Categorie</label>
+                <select class="form-control" asp-for="CategorieId" asp-items="new SelectList(ViewBag.Categories,nameof(Categorie.Id),nameof(Categorie.NameAz))">
+                </select>
+                <span class="text-danger" asp-validation-for="CategorieId"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescriptionAz">DescriptionAz</label>
+                <textarea class="form-control" asp-for="DescriptionAz" rows="2"></textarea>
+                <span class="text-danger" asp-validation-for="DescriptionAz"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescriptionRu">DescriptionRu</label>
+                <textarea class="form-control" asp-for="DescriptionRu" rows="2"></textarea>
+                <span class="text-danger" asp-validation-for="DescriptionRu"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescriptionEn">DescriptionEn</label>
+                <textarea class="form-control" asp-for="DescriptionEn" rows="2"></textarea>
+                <span class="text-danger" asp-validation-for="DescriptionEn"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LocationAz">LocationAz</label>
+                <input class="form-control" asp-for="LocationAz">
+                <span class="text-danger" asp-validation-for="LocationAz"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LocationRu">LocationRu</label>
+                <input class="form-control" asp-for="LocationRu">
+                <span class="text-danger" asp-validation-for="LocationRu"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LocationEn">LocationEn</label>
+                <input class="form-control" asp-for="LocationEn">
+                <span class="text-danger" asp-validation-for="LocationEn"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price">Price</label>
+                <input class="form-control" asp-for="Price">
+                <span class="text-danger" asp-validation-for="Price"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiscountedPrice">Discounted Price</label>
+                <input class="form-control" asp-for="DiscountedPrice">
+                <span class="text-danger" asp-validation-for="DiscountedPrice"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ImageFile">Əsas Şəkil</label>
+                <input class="form-control" asp-for="ImageFile">
+                <span class="text-danger" asp-validation-for="ImageFile"></span>
+            </div>
+            <div class="img-box" style="position:relative;margin-right:14px">
+                <img width="200" src="~/uploads/tours/@Model.Image" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Images">Şəkillər</label>
+                <input class="form-control" asp-for="Images">
+                <span class="text-danger" asp-validation-for="Images"></span>
+            </div>
+            <div class="d-flex">
+                @foreach (var item in Model.TourImages)
+                {
+                    <div class="img-box" style="position:relative;margin-right:14px">
+                        <input type="hidden" value="@item.Id">
+                        <img width="200" src="~/uploads/tours/@item.ImageName" />
+                        <input type="checkbox" name="TourImageIds" value="@item.Id" checked />
+                    </div>
+                }
+
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+
+@* @section Scripts{
+    @Html.Partial("_ValidationScriptsPartial")
+} *@
+
+

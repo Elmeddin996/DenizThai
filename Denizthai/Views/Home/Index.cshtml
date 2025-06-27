@@ -1,4 +1,7 @@
-﻿
+﻿@model HomeViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
 <!-- Hero Section Start -->
 <section class="hero-section hero-4">
     <div class="array-button">
@@ -75,116 +78,34 @@
     <div class="container">
         <div class="section-title-area lg-center">
             <div class="section-title">
-                <span class="wow fadeInUp">Trending Destinations</span>
-                <h2 class="wow fadeInUp" data-wow-delay=".3s">Trendy Travel Locations</h2>
+                <h2 class="wow fadeInUp" data-wow-delay=".3s">Trenddə olan Səyahət Yerləri</h2>
             </div>
-            <a href="~/destination.html" class="theme-btn theme-btn-2 wow fadeInUp" data-wow-delay=".5s">
-                <span>Explore More</span> <i class="far fa-long-arrow-right"></i>
+            <a asp-action="index" asp-controller="contact" class="theme-btn theme-btn-2 wow fadeInUp" data-wow-delay=".5s">
+                <span>Daha Ətraflı</span> <i class="far fa-long-arrow-right"></i>
             </a>
         </div>
         <div class="row">
-            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
-                <div class="trending-destinations-card-items">
-                    <div class="destinations-img">
-                        <img src="~/assets/img/destinations/01.jpg" alt="img">
-                       @*  <div class="icon">
-                            <a href="~/destination-details.html">
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
+         @foreach (var item in Model.Locations)
+            {
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
+                    <div class="trending-destinations-card-items">
+                        <div class="destinations-img">
+                            <img src="~/uploads/locations/@item.Image" alt="img">
+                            @*  <div class="icon">
+                        <a href="~/destination-details.html">
+                        <i class="fas fa-arrow-right"></i>
+                        </a>
                         </div> *@
-                        <ul class="destinations-content">
-                            <li class="title">
-                                <a href="~/destination-details.html">Istanbul, Turkey</a>
-                            </li>
-                        </ul>
+                            <ul class="destinations-content">
+                                <li class="title">
+                                    <a href="#">@item.NameAz</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s">
-                <div class="trending-destinations-card-items">
-                    <div class="destinations-img">
-                        <img src="~/assets/img/destinations/02.jpg" alt="img">
-                        @* <div class="icon">
-                            <a href="~/destination-details.html">
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div> *@
-                        <ul class="destinations-content">
-                            <li class="title">
-                                <a href="~/destination-details.html">Kyoto, Japan</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".7s">
-                <div class="trending-destinations-card-items">
-                    <div class="destinations-img">
-                        <img src="~/assets/img/destinations/03.jpg" alt="img">
-                       @*  <div class="icon">
-                            <a href="~/destination-details.html">
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div> *@
-                        <ul class="destinations-content">
-                            <li class="title">
-                                <a href="~/destination-details.html">Cusco, Peru</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
-                <div class="trending-destinations-card-items">
-                    <div class="destinations-img">
-                        <img src="~/assets/img/destinations/04.jpg" alt="img">
-                       @*  <div class="icon">
-                            <a href="~/destination-details.html">
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div> *@
-                        <ul class="destinations-content">
-                            <li class="title">
-                                <a href="~/destination-details.html">Vienna, Australia</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s">
-                <div class="trending-destinations-card-items">
-                    <div class="destinations-img">
-                        <img src="~/assets/img/destinations/05.jpg" alt="img">
-                        @* <div class="icon">
-                            <a href="~/destination-details.html">
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div> *@
-                        <ul class="destinations-content">
-                            <li class="title">
-                                <a href="~/destination-details.html">Lisbon, Portugal</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".7s">
-                <div class="trending-destinations-card-items">
-                    <div class="destinations-img">
-                        <img src="~/assets/img/destinations/06.jpg" alt="img">
-                       @*  <div class="icon">
-                            <a href="~/destination-details.html">
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div> *@
-                        <ul class="destinations-content">
-                            <li class="title">
-                                <a href="~/destination-details.html">Zagreb, Croatia</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+
+            }
         </div>
     </div>
 </section>
@@ -420,7 +341,7 @@
             <div class="swiper-slide">
                 <div class="instagram-image">
                     <img src="~/assets/img/instagram/01.jpg" alt="img">
-                    <a href="~/#" class="icon">
+                    <a href="https://www.instagram.com/denizthai/" class="icon">
                         <i class="fab fa-instagram"></i>
                     </a>
                 </div>
@@ -428,7 +349,7 @@
             <div class="swiper-slide">
                 <div class="instagram-image">
                     <img src="~/assets/img/instagram/02.jpg" alt="img">
-                    <a href="~/#" class="icon">
+                    <a href="https://www.instagram.com/denizthai/" class="icon">
                         <i class="fab fa-instagram"></i>
                     </a>
                 </div>
@@ -436,7 +357,7 @@
             <div class="swiper-slide">
                 <div class="instagram-image">
                     <img src="~/assets/img/instagram/03.jpg" alt="img">
-                    <a href="~/#" class="icon">
+                    <a href="https://www.instagram.com/denizthai/" class="icon">
                         <i class="fab fa-instagram"></i>
                     </a>
                 </div>
@@ -444,7 +365,7 @@
             <div class="swiper-slide">
                 <div class="instagram-image">
                     <img src="~/assets/img/instagram/04.jpg" alt="img">
-                    <a href="~/#" class="icon">
+                    <a href="https://www.instagram.com/denizthai/" class="icon">
                         <i class="fab fa-instagram"></i>
                     </a>
                 </div>

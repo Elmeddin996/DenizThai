@@ -1,0 +1,41 @@
+﻿@model Location
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h1>Edit</h1>
+        <form asp-action="edit" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="NameAz">Ad Az</label>
+                <input class="form-control" asp-for="NameAz">
+                <span class="text-danger" asp-validation-for="NameAz"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NameRu">Ad Ru</label>
+                <input class="form-control" asp-for="NameRu">
+                <span class="text-danger" asp-validation-for="NameRu"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NameEn">Ad En</label>
+                <input class="form-control" asp-for="NameEn">
+                <span class="text-danger" asp-validation-for="NameEn"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ImageFile">Image</label>
+                <input class="form-control" asp-for="ImageFile">
+                <span class="text-danger" asp-validation-for="ImageFile"></span>
+
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+</div>
+
+@* @section Scripts {
+    @Html.Partial("_ValidationScriptsPartial")
+} *@

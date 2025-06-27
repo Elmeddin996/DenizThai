@@ -1,69 +1,76 @@
-﻿<!DOCTYPE html>
+﻿@using Denizthai.Services
+@inject LayoutService _layoutService
+
+@{
+    var settings = _layoutService.GetSettings();
+}
+
+<!DOCTYPE html>
 <html lang="en">
-    <!--<< Header Area >>-->
-     
+<!--<< Header Area >>-->
 <!-- Mirrored from modinatheme.com/html/travil/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 09 Mar 2025 18:44:06 GMT -->
 <head>
-        <!-- ========== Meta Tags ========== -->
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="author" content="modinatheme">
-        <meta name="description" content="Deniz Thai">
-        <!-- ======== Page title ============ -->
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="modinatheme">
+    <meta name="description" content="Deniz Thai">
+    <!-- ======== Page title ============ -->
     <title>Deniz Thai</title>
-        <!--<< Favicon >>-->
-        <link rel="shortcut icon" href="~/assets/img/logo/ba1a8762-9bbf-4016-a1ae-e3341cb9017a.jpg">
-        <!--<< Bootstrap min.css >>-->
-        <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
-        <!--<< Font Awesome.css >>-->
-        <link rel="stylesheet" href="~/assets/css/font-awesome.css">
-        <!--<< Animate.css >>-->
-        <link rel="stylesheet" href="~/assets/css/animate.css">
-        <!--<< Magnific Popup.css >>-->
-        <link rel="stylesheet" href="~/assets/css/magnific-popup.css">
-        <!--<< MeanMenu.css >>-->
-        <link rel="stylesheet" href="~/assets/css/meanmenu.css">
-        <!--<< Odometer.css >>-->
-        <link rel="stylesheet" href="~/assets/css/odometer.css">
-        <!--<< Swiper Bundle.css >>-->
-        <link rel="stylesheet" href="~/assets/css/swiper-bundle.min.css">
-        <!--<< DatePicker.css >>-->
-        <link rel="stylesheet" href="~/assets/css/datepickerboot.css">
-        <!--<< Nice Select.css >>-->
-        <link rel="stylesheet" href="~/assets/css/nice-select.css">
-        <!--<< Main.css >>-->
-        <link rel="stylesheet" href="~/assets/css/main.css">
-        <!--<< Style.css >>-->
-        <link rel="stylesheet" href="~/style.css">
-    </head>
+    <!--<< Favicon >>-->
+    <link rel="shortcut icon" href="~/assets/img/logo/ba1a8762-9bbf-4016-a1ae-e3341cb9017a.jpg">
+    <!--<< Bootstrap min.css >>-->
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <!--<< Font Awesome.css >>-->
+    <link rel="stylesheet" href="~/assets/css/font-awesome.css">
+    <!--<< Animate.css >>-->
+    <link rel="stylesheet" href="~/assets/css/animate.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <!--<< Magnific Popup.css >>-->
+    <link rel="stylesheet" href="~/assets/css/magnific-popup.css">
+    <!--<< MeanMenu.css >>-->
+    <link rel="stylesheet" href="~/assets/css/meanmenu.css">
+    <!--<< Odometer.css >>-->
+    <link rel="stylesheet" href="~/assets/css/odometer.css">
+    <!--<< Swiper Bundle.css >>-->
+    <link rel="stylesheet" href="~/assets/css/swiper-bundle.min.css">
+    <!--<< DatePicker.css >>-->
+    <link rel="stylesheet" href="~/assets/css/datepickerboot.css">
+    <!--<< Nice Select.css >>-->
+    <link rel="stylesheet" href="~/assets/css/nice-select.css">
+    <!--<< Main.css >>-->
+    <link rel="stylesheet" href="~/assets/css/main.css">
+    <!--<< Style.css >>-->
+    <link rel="stylesheet" href="~/style.css">
+</head>
 
-    <body>
+<body>
 
-        <!-- Preloader Start -->
-        <div id="preloader" class="preloader">
-            <div class="animation-preloader">
-                <div class="spinner">                
-                </div>
-                <div class="txt-loading">
-                    <span data-text-preloader="D" class="letters-loading">
-                        D
-                    </span>
-                    <span data-text-preloader="E" class="letters-loading">
-                        E
-                    </span>
-                    <span data-text-preloader="N" class="letters-loading">
-                        N
-                    </span>
-                    <span data-text-preloader="I" class="letters-loading">
-                        I
-                    </span>
-                    <span data-text-preloader="Z" class="letters-loading">
-                        Z
-                    </span>
-                    <span data-text-preloader="T" class="letters-loading">
-                        T
-                    </span>
+    <!-- Preloader Start -->
+    <div id="preloader" class="preloader">
+        <div class="animation-preloader">
+            <div class="spinner">
+            </div>
+            <div class="txt-loading">
+                <span data-text-preloader="D" class="letters-loading">
+                    D
+                </span>
+                <span data-text-preloader="E" class="letters-loading">
+                    E
+                </span>
+                <span data-text-preloader="N" class="letters-loading">
+                    N
+                </span>
+                <span data-text-preloader="I" class="letters-loading">
+                    I
+                </span>
+                <span data-text-preloader="Z" class="letters-loading">
+                    Z
+                </span>
+                <span data-text-preloader="T" class="letters-loading">
+                    T
+                </span>
                 <span data-text-preloader="H" class="letters-loading">
                     H
                 </span>
@@ -73,157 +80,156 @@
                 <span data-text-preloader="I" class="letters-loading">
                     I
                 </span>
-                </div>
-                <p class="text-center">Loading...</p>
             </div>
-            <div class="loader">
-                <div class="row">
-                    <div class="col-3 loader-section section-left">
-                        <div class="bg"></div>
-                    </div>
-                    <div class="col-3 loader-section section-left">
-                        <div class="bg"></div>
-                    </div>
-                    <div class="col-3 loader-section section-right">
-                        <div class="bg"></div>
-                    </div>
-                    <div class="col-3 loader-section section-right">
-                        <div class="bg"></div>
-                    </div>
+            <p class="text-center">Loading...</p>
+        </div>
+        <div class="loader">
+            <div class="row">
+                <div class="col-3 loader-section section-left">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-left">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-right">
+                    <div class="bg"></div>
+                </div>
+                <div class="col-3 loader-section section-right">
+                    <div class="bg"></div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Back To Top start -->
-        <button id="back-top" class="back-to-top">
-            <i class="fas fa-long-arrow-up"></i>
-        </button>
+    <!-- Back To Top start -->
+    <button id="back-top" class="back-to-top">
+        <i class="fas fa-long-arrow-up"></i>
+    </button>
 
-        <!-- Offcanvas Area Start -->
-        <div class="fix-area">
-            <div class="offcanvas__info">
-                <div class="offcanvas__wrapper">
-                    <div class="offcanvas__content">
-                        <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
-                            <div class="offcanvas__logo">
-                                <a href="~/index.html">
+    <!-- Offcanvas Area Start -->
+    <div class="fix-area">
+        <div class="offcanvas__info">
+            <div class="offcanvas__wrapper">
+                <div class="offcanvas__content">
+                    <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+                        <div class="offcanvas__logo">
+                            <a asp-action="index" asp-controller="home">
                                 <img src="~/assets/img/logo/ba1a8762-9bbf-4016-a1ae-e3341cb9017a.jpg" alt="logo-img" style="width:230px">
-                                </a>
-                            </div>
-                            <div class="offcanvas__close">
-                                <button>
-                                <i class="fas fa-times"></i>
-                                </button>
-                            </div>
+                            </a>
                         </div>
-                        <div class="mobile-menu fix mb-3"></div>
-                        <div class="offcanvas__contact">
-                            <div class="social-icon d-flex align-items-center">
-                                <a href="~/#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="~/#"><i class="fab fa-twitter"></i></a>
-                                <a href="~/#"><i class="fab fa-youtube"></i></a>
-                                <a href="~/#"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
+                        <div class="offcanvas__close">
+                            <button>
+                                <i class="fas fa-times"></i>
+                            </button>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="offcanvas__overlay"></div>
-
-        <!-- Header Section Start -->
-        <header class="header-section header-inner">
-            <div class="header-top-section">
-                <div class="container-fluid">
-                    <div class="header-top-wrapper">
-                        <ul class="top-left">
-                            <li>
-                                <i class="far fa-envelope"></i>
-                                <a href=""></a>
-                            </li>
-                            <li>
-                                <i class="far fa-map-marker-alt"></i>
-                                132, Tic St, Wingston, New York 12401
-                            </li>
-                        </ul>
-                        <div class="social-icon">
+                    <div class="mobile-menu fix mb-3"></div>
+                    <div class="offcanvas__contact">
+                        <div class="social-icon d-flex align-items-center">
                             <a href="~/#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="~/#"><i class="fab fa-instagram"></i></a>
                             <a href="~/#"><i class="fab fa-twitter"></i></a>
+                            <a href="~/#"><i class="fab fa-youtube"></i></a>
                             <a href="~/#"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="header-sticky" class="header-1 header-4">
-                <div class="container-fluid">
-                    <div class="mega-menu-wrapper">
-                        <div class="header-main">
-                            <div class="header-left">
-                                <div class="logo">
-                                    <a href="~/index.html" class="header-logo">
+        </div>
+    </div>
+    <div class="offcanvas__overlay"></div>
+
+    <!-- Header Section Start -->
+    <header class="header-section header-inner">
+        <div class="header-top-section">
+            <div class="container-fluid">
+                <div class="header-top-wrapper">
+                    <ul class="top-left">
+                        @foreach (var setting in settings)
+                        {
+                            <li>
+                                <i class="far fa-map-marker-alt"></i>
+                                @setting.AddressAz
+
+                            </li>
+                        }
+                    </ul>
+                    <div class="social-icon">
+                        <a href="~/#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="~/#"><i class="fab fa-instagram"></i></a>
+                        <a href="~/#"><i class="fab fa-twitter"></i></a>
+                        <a href="~/#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="header-sticky" class="header-1 header-4">
+            <div class="container-fluid">
+                <div class="mega-menu-wrapper">
+                    <div class="header-main">
+                        <div class="header-left">
+                            <div class="logo">
+                                <a asp-action="index" asp-controller="home" class="header-logo">
                                     <img src="~/assets/img/logo/ba1a8762-9bbf-4016-a1ae-e3341cb9017a.jpg" alt="logo-img" style="width:230px">
-                                    </a>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="header-right d-flex justify-content-end align-items-center">
+                            <div class="mean__menu-wrapper">
+                                <div class="main-menu">
+                                    <nav id="mobile-menu">
+                                        <ul>
+                                            <li class="has-dropdown menu-thumb">
+                                                <a asp-action="index" asp-controller="home">
+                                                    Əsas Səhifə
+                                                </a>
+                                            </li>
+                                            <li class="has-dropdown active d-xl-none">
+                                                <a asp-action="index" asp-controller="home" class="border-none">
+                                                    Əsas Səhifə
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a asp-action="index" asp-controller="tour">
+                                                    Turlar
+                                                </a>
+
+                                            </li>
+
+
+                                            <li>
+                                                <a asp-action="index" asp-controller="about">
+                                                    Haqqımızda
+                                                </a>
+
+                                            </li>
+                                            <li>
+                                                <a asp-action="index" asp-controller="contact">
+                                                    Əlaqə
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
                                 </div>
                             </div>
-                            <div class="header-right d-flex justify-content-end align-items-center">
-                                <div class="mean__menu-wrapper">
-                                    <div class="main-menu">
-                                        <nav id="mobile-menu">
-                                            <ul>
-                                                <li class="has-dropdown menu-thumb">
-                                                    <a href="~/index.html">
-                                                        Home
-                                                    </a>
-                                                </li>
-                                                <li class="has-dropdown active d-xl-none">
-                                                    <a href="~/index.html" class="border-none">
-                                                    Home
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="~/tour-details.html">
-                                                        Tours
-                                                    </a>
-                                                   
-                                                </li>
-                                               
-                                               
-                                                <li>
-                                                    <a href="~/news-details.html">
-                                                         About
-                                                    </a>
-                                                   
-                                                </li>
-                                                <li>
-                                                    <a href="~/contact.html">
-                                                        Contact
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </nav>
-                                    </div>
+                            <div class="contact-items">
+                                <div class="icon">
+                                    <img src="~/assets/img/call.png" alt="img">
                                 </div>
-                                <div class="contact-items">
-                                    <div class="icon">
-                                        <img src="~/assets/img/call.png" alt="img">
-                                    </div>
-                                    <div class="content">
-                                        <span>Call Us</span>
-                                        <h6><a href="~/tel:+8809533309">+88 (09) 53 33 09</a></h6>
-                                    </div>
+                                <div class="content">
+                                    <span>Call Us</span>
+                                    <h6><a href="~/tel:+8809533309">+88 (09) 53 33 09</a></h6>
                                 </div>
-                               
-                                <a href="~/tour-details.html" class="theme-btn">
-                                    <span>Contact</span> <i class="far fa-long-arrow-right"></i>
-                                </a>
-                                <div class="header__hamburger d-xl-none my-auto">
-                                    <div class="sidebar__toggle">
-                                        <div class="header-bar">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
+                            </div>
+
+                            <a asp-action="index" asp-controller="contact" class="theme-btn">
+                                <span>Bizimlə Əlaqə</span> <i class="far fa-long-arrow-right"></i>
+                            </a>
+                            <div class="header__hamburger d-xl-none my-auto">
+                                <div class="sidebar__toggle">
+                                    <div class="header-bar">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
                                     </div>
                                 </div>
                             </div>
@@ -231,194 +237,194 @@
                     </div>
                 </div>
             </div>
-        </header>
-        
-        @RenderBody()
+        </div>
+    </header>
 
-        <!-- Footer Section Start -->
-        <footer class="footer-section fix section-bg bg-cover" style="background-image: url('assets/img/footer/bg-image.jpg');">
-            <div class="container">
-               
-                <div class="footer-wrapper">
-                    <div class="row">
-                        <div class="col-xl-5 col-lg-7 col-md-12">
-                            <div class="footer-widget-items">
-                                <div class="widget-title">
-                                    <a href="~/index.html" class="footer-logo">
+    @RenderBody()
+
+    <!-- Footer Section Start -->
+    <footer class="footer-section fix section-bg bg-cover" style="background-image: url('assets/img/footer/bg-image.jpg');">
+        <div class="container">
+
+            <div class="footer-wrapper">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-7 col-md-12">
+                        <div class="footer-widget-items">
+                            <div class="widget-title">
+                                <a href="~/index.html" class="footer-logo">
                                     <img src="~/assets/img/logo/ba1a8762-9bbf-4016-a1ae-e3341cb9017a.jpg" alt="img" style="width:230px">
+                                </a>
+                            </div>
+                            <div class="footer-content">
+                                <div class="contact-info-items">
+                                    <div class="contact-items">
+                                        <div class="icon">
+                                            <img src="~/assets/img/call.png" alt="img">
+                                        </div>
+                                        <div class="content">
+                                            <span>Call Us</span>
+                                            <h6><a href="~/tel:+8809533309">+88 (09) 53 33 09</a></h6>
+                                        </div>
+                                    </div>
+                                    <div class="contact-items">
+                                        <div class="icon">
+                                            <img src="~/assets/img/mail.png" alt="img">
+                                        </div>
+                                        <div class="content">
+                                            <span>Mail Us</span>
+                                            <h6><a href="~/https://modinatheme.com/cdn-cgi/l/email-protection#3851565e57785d40595548545d165b5755"><span class="__cf_email__" data-cfemail="a8c1c6cec7e8cdd0c9c5d8c4cd86cbc7c5">[email&#160;protected]</span></a></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h6 class="app-text">Your all-in-one travel app</h6>
+                                <div class="apps-items">
+                                    <a href="~/contact.html">
+                                        <img src="~/assets/img/apply-store.png" alt="img">
+                                    </a>
+                                    <a href="~/contact.html">
+                                        <img src="~/assets/img/play-store.jpg" alt="img">
                                     </a>
                                 </div>
-                                <div class="footer-content">
-                                    <div class="contact-info-items">
-                                        <div class="contact-items">
-                                            <div class="icon">
-                                                <img src="~/assets/img/call.png" alt="img">
-                                            </div>
-                                            <div class="content">
-                                                <span>Call Us</span>
-                                                <h6><a href="~/tel:+8809533309">+88 (09) 53 33 09</a></h6>
-                                            </div>
-                                        </div>
-                                        <div class="contact-items">
-                                            <div class="icon">
-                                                <img src="~/assets/img/mail.png" alt="img">
-                                            </div>
-                                            <div class="content">
-                                                <span>Mail Us</span>
-                                                <h6><a href="~/https://modinatheme.com/cdn-cgi/l/email-protection#3851565e57785d40595548545d165b5755"><span class="__cf_email__" data-cfemail="a8c1c6cec7e8cdd0c9c5d8c4cd86cbc7c5">[email&#160;protected]</span></a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h6 class="app-text">Your all-in-one travel app</h6>
-                                    <div class="apps-items">
-                                        <a href="~/contact.html">
-                                            <img src="~/assets/img/apply-store.png" alt="img">
-                                        </a>
-                                        <a href="~/contact.html">
-                                            <img src="~/assets/img/play-store.jpg" alt="img">
-                                        </a>
-                                    </div>
-                                    <div class="social-icon">
-                                        <a href="~/#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="~/#"><i class="fab fa-instagram"></i></a>
-                                        <a href="~/#"><i class="fab fa-twitter"></i></a>
-                                        <a href="~/#"><i class="fab fa-linkedin-in"></i></a>
-                                    </div>
+                                <div class="social-icon">
+                                    <a href="~/#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="~/#"><i class="fab fa-instagram"></i></a>
+                                    <a href="~/#"><i class="fab fa-twitter"></i></a>
+                                    <a href="~/#"><i class="fab fa-linkedin-in"></i></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-2 col-lg-5 col-md-4 col-sm-6">
-                            <div class="footer-widget-items">
-                                <div class="widget-title">
-                                    <h3>Useful Links</h3>
-                                </div>
-                                <ul class="list-items">
-                                    <li>
-                                        <a href="~/destination.html">All Destination</a>
-                                    </li>
-                                    <li>
-                                        <a href="~/contact.html">24/7 Support</a>
-                                    </li>
-                                    <li>
-                                        <a href="~/team.html">Our Team</a>
-                                    </li>
-                                    <li>
-                                        <a href="~/tour.html">Tour Places</a>
-                                    </li>
-                                    <li>
-                                        <a href="~/contact.html">Reviews</a>
-                                    </li>
-                                </ul>
+                    </div>
+                    <div class="col-xl-2 col-lg-5 col-md-4 col-sm-6">
+                        <div class="footer-widget-items">
+                            <div class="widget-title">
+                                <h3>Useful Links</h3>
                             </div>
+                            <ul class="list-items">
+                                <li>
+                                    <a href="~/destination.html">All Destination</a>
+                                </li>
+                                <li>
+                                    <a href="~/contact.html">24/7 Support</a>
+                                </li>
+                                <li>
+                                    <a href="~/team.html">Our Team</a>
+                                </li>
+                                <li>
+                                    <a href="~/tour.html">Tour Places</a>
+                                </li>
+                                <li>
+                                    <a href="~/contact.html">Reviews</a>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
-                            <div class="footer-widget-items">
-                                <div class="widget-title">
-                                    <h3>About Travil</h3>
-                                </div>
-                                <ul class="list-items">
-                                    <li>
-                                        <a href="~/about.html">About Us</a>
-                                    </li>
-                                    <li>
-                                        <a href="~/contact.html">Legal Notice</a>
-                                    </li>
-                                    <li>
-                                        <a href="~/contact.html">Terms & Condition</a>
-                                    </li>
-                                    <li>
-                                        <a href="~/contact.html">Contact Us</a>
-                                    </li>
-                                    <li>
-                                        <a href="~/contact.html">Apple Store</a>
-                                    </li>
-                                </ul>
+                    </div>
+                    <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
+                        <div class="footer-widget-items">
+                            <div class="widget-title">
+                                <h3>About Travil</h3>
                             </div>
+                            <ul class="list-items">
+                                <li>
+                                    <a href="~/about.html">About Us</a>
+                                </li>
+                                <li>
+                                    <a href="~/contact.html">Legal Notice</a>
+                                </li>
+                                <li>
+                                    <a href="~/contact.html">Terms & Condition</a>
+                                </li>
+                                <li>
+                                    <a href="~/contact.html">Contact Us</a>
+                                </li>
+                                <li>
+                                    <a href="~/contact.html">Apple Store</a>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="col-xl-3 col-lg-4 col-md-4">
-                            <div class="footer-widget-items">
-                                <div class="widget-title">
-                                    <h3>Gallery</h3>
-                                </div>
-                                <div class="footer-gallery">
-                                    <div class="gallery-wrap">
-                                        <div class="gallery-item">
-                                            <div class="thumb">
-                                                <a href="~/assets/img/footer/gallery-1.jpg" class="img-popup">
-                                                    <img src="~/assets/img/footer/gallery-1.jpg" alt="gallery-img">
-                                                    <div class="icon">
-                                                        <i class="far fa-plus"></i>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="thumb">
-                                                <a href="~/assets/img/footer/gallery-2.jpg" class="img-popup">
-                                                    <img src="~/assets/img/footer/gallery-2.jpg" alt="gallery-img">
-                                                    <div class="icon">
-                                                        <i class="far fa-plus"></i>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="thumb">
-                                                <a href="~/assets/img/footer/gallery-3.jpg" class="img-popup">
-                                                    <img src="~/assets/img/footer/gallery-3.jpg" alt="gallery-img">
-                                                    <div class="icon">
-                                                        <i class="far fa-plus"></i>
-                                                    </div>
-                                                </a>
-                                            </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-4">
+                        <div class="footer-widget-items">
+                            <div class="widget-title">
+                                <h3>Gallery</h3>
+                            </div>
+                            <div class="footer-gallery">
+                                <div class="gallery-wrap">
+                                    <div class="gallery-item">
+                                        <div class="thumb">
+                                            <a href="~/assets/img/footer/gallery-1.jpg" class="img-popup">
+                                                <img src="~/assets/img/footer/gallery-1.jpg" alt="gallery-img">
+                                                <div class="icon">
+                                                    <i class="far fa-plus"></i>
+                                                </div>
+                                            </a>
                                         </div>
-                                        <div class="gallery-item">
-                                            <div class="thumb">
-                                                <a href="~/assets/img/footer/gallery-4.jpg" class="img-popup">
-                                                    <img src="~/assets/img/footer/gallery-4.jpg" alt="gallery-img">
-                                                    <div class="icon">
-                                                        <i class="far fa-plus"></i>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="thumb">
-                                                <a href="~/assets/img/footer/gallery-5.jpg" class="img-popup">
-                                                    <img src="~/assets/img/footer/gallery-5.jpg" alt="gallery-img">
-                                                    <div class="icon">
-                                                        <i class="far fa-plus"></i>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="thumb">
-                                                <a href="~/assets/img/footer/gallery-6.jpg" class="img-popup">
-                                                    <img src="~/assets/img/footer/gallery-6.jpg" alt="gallery-img">
-                                                    <div class="icon">
-                                                        <i class="far fa-plus"></i>
-                                                    </div>
-                                                </a>
-                                            </div>
+                                        <div class="thumb">
+                                            <a href="~/assets/img/footer/gallery-2.jpg" class="img-popup">
+                                                <img src="~/assets/img/footer/gallery-2.jpg" alt="gallery-img">
+                                                <div class="icon">
+                                                    <i class="far fa-plus"></i>
+                                                </div>
+                                            </a>
                                         </div>
-                                        <div class="gallery-item">
-                                            <div class="thumb">
-                                                <a href="~/assets/img/footer/gallery-7.jpg" class="img-popup">
-                                                    <img src="~/assets/img/footer/gallery-7.jpg" alt="gallery-img">
-                                                    <div class="icon">
-                                                        <i class="far fa-plus"></i>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="thumb">
-                                                <a href="~/assets/img/footer/gallery-8.jpg" class="img-popup">
-                                                    <img src="~/assets/img/footer/gallery-8.jpg" alt="gallery-img">
-                                                    <div class="icon">
-                                                        <i class="far fa-plus"></i>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="thumb">
-                                                <a href="~/assets/img/footer/gallery-9.jpg" class="img-popup">
-                                                    <img src="~/assets/img/footer/gallery-9.jpg" alt="gallery-img">
-                                                    <div class="icon">
-                                                        <i class="far fa-plus"></i>
-                                                    </div>
-                                                </a>
-                                            </div>
+                                        <div class="thumb">
+                                            <a href="~/assets/img/footer/gallery-3.jpg" class="img-popup">
+                                                <img src="~/assets/img/footer/gallery-3.jpg" alt="gallery-img">
+                                                <div class="icon">
+                                                    <i class="far fa-plus"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <div class="thumb">
+                                            <a href="~/assets/img/footer/gallery-4.jpg" class="img-popup">
+                                                <img src="~/assets/img/footer/gallery-4.jpg" alt="gallery-img">
+                                                <div class="icon">
+                                                    <i class="far fa-plus"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="thumb">
+                                            <a href="~/assets/img/footer/gallery-5.jpg" class="img-popup">
+                                                <img src="~/assets/img/footer/gallery-5.jpg" alt="gallery-img">
+                                                <div class="icon">
+                                                    <i class="far fa-plus"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="thumb">
+                                            <a href="~/assets/img/footer/gallery-6.jpg" class="img-popup">
+                                                <img src="~/assets/img/footer/gallery-6.jpg" alt="gallery-img">
+                                                <div class="icon">
+                                                    <i class="far fa-plus"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <div class="thumb">
+                                            <a href="~/assets/img/footer/gallery-7.jpg" class="img-popup">
+                                                <img src="~/assets/img/footer/gallery-7.jpg" alt="gallery-img">
+                                                <div class="icon">
+                                                    <i class="far fa-plus"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="thumb">
+                                            <a href="~/assets/img/footer/gallery-8.jpg" class="img-popup">
+                                                <img src="~/assets/img/footer/gallery-8.jpg" alt="gallery-img">
+                                                <div class="icon">
+                                                    <i class="far fa-plus"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="thumb">
+                                            <a href="~/assets/img/footer/gallery-9.jpg" class="img-popup">
+                                                <img src="~/assets/img/footer/gallery-9.jpg" alt="gallery-img">
+                                                <div class="icon">
+                                                    <i class="far fa-plus"></i>
+                                                </div>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -427,57 +433,59 @@
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom-1">
-                <div class="container">
-                    <div class="footer-bottom-wrapper">
-                        <p class="wow fadeInUp" data-wow-delay=".3s">
-                            © 2025 Travil LLC All rights reserved.
-                        </p>
-                        <ul class="footer-menu wow fadeInUp" data-wow-delay=".5s">
-                            <li>
-                                <a href="~/contact.html">
-                                    Privacy 
-                                </a>
-                            </li>
-                            <li>
-                                <a href="~/contact.html">
-                                    Terms 
-                                </a>
-                            </li>
-                            <li>
-                                <a href="~/contact.html">
-                                    Site Map
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+        </div>
+        <div class="footer-bottom-1">
+            <div class="container">
+                <div class="footer-bottom-wrapper">
+                    <p class="wow fadeInUp" data-wow-delay=".3s">
+                        © 2025 Travil LLC All rights reserved.
+                    </p>
+                    <ul class="footer-menu wow fadeInUp" data-wow-delay=".5s">
+                        <li>
+                            <a href="~/contact.html">
+                                Privacy
+                            </a>
+                        </li>
+                        <li>
+                            <a href="~/contact.html">
+                                Terms
+                            </a>
+                        </li>
+                        <li>
+                            <a href="~/contact.html">
+                                Site Map
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </footer>
+        </div>
+    </footer>
 
-        <!--<< All JS Plugins >>-->
-        <script data-cfasync="false" src="~/../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="~/assets/js/jquery-3.7.1.min.js"></script>
-        <!--<< Bootstrap Js >>-->
-        <script src="~/assets/js/bootstrap.bundle.min.js"></script>
-        <!--<< Nice Select Js >>-->
-        <script src="~/assets/js/jquery.nice-select.min.js"></script>
-        <!--<< Odometer Js >>-->
-        <script src="~/assets/js/odometer.min.js"></script>
-        <!--<< Appear Js >>-->
-        <script src="~/assets/js/jquery.appear.min.js"></script>
-        <!--<< Datepicker Js >>-->
-        <script src="~/assets/js/bootstrap-datepicker.js"></script>
-        <!--<< Swiper Slider Js >>-->
-        <script src="~/assets/js/swiper-bundle.min.js"></script>
-        <!--<< MeanMenu Js >>-->
-        <script src="~/assets/js/jquery.meanmenu.min.js"></script>
-        <!--<< Magnific Popup Js >>-->
-        <script src="~/assets/js/jquery.magnific-popup.min.js"></script>
-        <!--<< Wow Animation Js >>-->
-        <script src="~/assets/js/wow.min.js"></script>
-        <!--<< Main.js >>-->
-        <script src="~/assets/js/main.js"></script>
-    </body>
+    <!--<< All JS Plugins >>-->
+    <script data-cfasync="false" src="~/../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="~/assets/js/jquery-3.7.1.min.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="~/assets/js/bootstrap.bundle.min.js"></script>
+    <!--<< Nice Select Js >>-->
+    <script src="~/assets/js/jquery.nice-select.min.js"></script>
+    <!--<< Odometer Js >>-->
+    <script src="~/assets/js/odometer.min.js"></script>
+    <!--<< Appear Js >>-->
+    <script src="~/assets/js/jquery.appear.min.js"></script>
+    <!--<< Datepicker Js >>-->
+    <script src="~/assets/js/bootstrap-datepicker.js"></script>
+    <!--<< Swiper Slider Js >>-->
+    <script src="~/assets/js/swiper-bundle.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="~/assets/js/jquery.meanmenu.min.js"></script>
+    <!--<< Magnific Popup Js >>-->
+    <script src="~/assets/js/jquery.magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="~/assets/js/wow.min.js"></script>
+    <!--<< Main.js >>-->
+    <script src="~/assets/js/main.js"></script>
+</body>
 
 <!-- Mirrored from modinatheme.com/html/travil/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 09 Mar 2025 18:44:33 GMT -->
 </html>

@@ -1,0 +1,53 @@
+﻿@model Settings
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h1>Redaktə Et</h1>
+        <form asp-action="edit" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="AddressAz">Ünvan Az</label>
+                <input class="form-control" placeholder="Ünvan Əlavə Edin" asp-for="AddressAz">
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressEn">Ünvan En</label>
+                <input class="form-control" placeholder="Ünvan Əlavə Edin" asp-for="AddressEn">
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressRu">Ünvan Ru</label>
+                <input class="form-control" placeholder="Ünvan Əlavə Edin" asp-for="AddressRu">
+            </div>
+             <div class="form-group">
+                <label asp-for="AboutAz">Haqqında Az</label>
+                <textarea class="form-control" placeholder="Haqqında Əlavə Edin" asp-for="AboutAz"></textarea>
+            </div>
+            <div class="form-group">
+                <label asp-for="AboutEn">Haqqında En</label>
+                <textarea class="form-control" placeholder="Haqqında Əlavə Edin" asp-for="AboutEn"></textarea>
+            </div>
+            <div class="form-group">
+                <label asp-for="AboutRu">Haqqında Ru</label>
+                <textarea class="form-control" placeholder="Haqqında Əlavə Edin" asp-for="AboutRu"></textarea>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone">Əlaqə Nömrəsi</label>
+                <input class="form-control" placeholder="Əlaqə Nömrəsi Əlavə Edin" asp-for="Phone">
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="Email">Email</label>
+                <input class="form-control" placeholder="Email Əlavə Edin" asp-for="Email">
+            </div>
+            <div class="form-group">
+                <label asp-for="InstaLink">Instagram Link</label>
+                <input class="form-control" placeholder="Link Əlavə Edin" asp-for="InstaLink">
+            </div>
+           
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+</div>
+
