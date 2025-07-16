@@ -45,6 +45,9 @@ namespace Denizthai.Areas.Manage.Controllers
             existSettings.AboutEn= settings.AboutEn;
             existSettings.Email= settings.Email;
             existSettings.Phone= settings.Phone;
+            existSettings.Phone2= settings.Phone2;
+            existSettings.TelegramLink= settings.TelegramLink;
+            existSettings.InstaLink= settings.InstaLink;
 
             _context.SaveChanges();
 

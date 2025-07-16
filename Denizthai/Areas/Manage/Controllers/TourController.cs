@@ -144,9 +144,13 @@ namespace Denizthai.Areas.Manage.Controllers
             existTour.LocationAz = tour.LocationAz;
             existTour.LocationRu = tour.LocationRu;
             existTour.LocationEn = tour.LocationEn;
+            existTour.DurationAz = tour.DurationAz;
+            existTour.DurationRu = tour.DurationRu;
+            existTour.DurationEn = tour.DurationEn;
             existTour.Price = tour.Price;
             existTour.DiscountedPrice = tour.DiscountedPrice;
             existTour.CategorieId = tour.CategorieId;
+            existTour.IsPopular = tour.IsPopular;
 
             _context.SaveChanges();
 

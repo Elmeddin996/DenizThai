@@ -60,6 +60,21 @@
                 <span class="text-danger" asp-validation-for="LocationEn"></span>
             </div>
             <div class="form-group">
+                <label asp-for="DurationAz">Müddət Az</label>
+                <input class="form-control" asp-for="DurationAz">
+                <span class="text-danger" asp-validation-for="DurationAz"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DurationEn">Müddət En</label>
+                <input class="form-control" asp-for="DurationEn">
+                <span class="text-danger" asp-validation-for="DurationEn"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DurationRu">Müddət Ru</label>
+                <input class="form-control" asp-for="DurationRu">
+                <span class="text-danger" asp-validation-for="DurationRu"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Price">Price</label>
                 <input class="form-control" asp-for="Price">
                 <span class="text-danger" asp-validation-for="Price"></span>
@@ -68,6 +83,12 @@
                 <label asp-for="DiscountedPrice">Discounted Price</label>
                 <input class="form-control" asp-for="DiscountedPrice">
                 <span class="text-danger" asp-validation-for="DiscountedPrice"></span>
+            </div>
+
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" asp-for="IsPopular" />
+                <label class="form-check-label" asp-for="IsPopular">Is Popular</label>
+                <span class="text-danger" asp-validation-for="IsPopular"></span>
             </div>
 
             <div class="form-group">

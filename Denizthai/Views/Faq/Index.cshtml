@@ -1,0 +1,138 @@
+﻿@model List<Faq>
+
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+    }
+
+    .faq-container {
+        max-width: 850px;
+        margin: auto;
+        background: #ffffffcc;
+        border-radius: 16px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        padding: 40px 30px;
+        backdrop-filter: blur(6px);
+        border: 1px solid #fff;
+    }
+
+    .faq-title {
+        text-align: center;
+        font-size: 36px;
+        font-weight: bold;
+        color: #2c3e50;
+        margin-bottom: 40px;
+        text-shadow: 0 1px 0 #fff;
+    }
+
+    .accordion-item {
+        border-bottom: 1px solid #ddd;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        background: #fff;
+    }
+
+    .accordion-question {
+        cursor: pointer;
+        padding: 20px 25px;
+        font-size: 20px;
+        font-weight: 500;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #34495e;
+        background: #f9f9f9;
+        transition: background 0.3s ease;
+    }
+
+        .accordion-question:hover {
+            background-color: #e3f2fd;
+        }
+
+    .accordion-icon {
+        font-size: 20px;
+        color: #00796b;
+        transition: transform 0.3s ease, color 0.3s;
+    }
+
+    .accordion-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out, padding 0.3s ease;
+        padding: 0 25px;
+        background-color: #fafafa;
+    }
+
+        .accordion-answer p {
+            margin: 15px 0;
+            color: #444;
+            line-height: 1.7;
+        }
+
+    .accordion-item.active .accordion-answer {
+        max-height: 1500px;
+        padding: 15px 25px 25px;
+    }
+
+    .accordion-item.active .accordion-icon {
+        transform: rotate(180deg);
+        color: #004d40;
+    }
+</style>
+<div class="marque-wrapper style-2">
+    <div dir="rtl" class="swiper text-slider-2">
+        <div class="swiper-wrapper slide-transtion">
+            @foreach (var item in Model)
+            {
+                <div class="swiper-slide brand-slide-element">
+                    <div class="marque-text">
+                        <img src="~/assets/img/marque.png" alt="img">
+                        <h3>@item.QuestionAz</h3>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="faq-container" style="margin-top:50px">
+    <h2 class="faq-title">Tez-tez verilən suallar</h2>
+
+    @foreach (var item in Model)
+    {
+        <div class="accordion-item">
+            <div class="accordion-question">
+                @item.QuestionAz ?
+                <span class="accordion-icon">▼</span>
+            </div>
+            <div class="accordion-answer">
+                <p>@item.AnswerAz</p>
+            </div>
+        </div>
+
+    }
+
+
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const items = document.querySelectorAll('.accordion-item');
+
+        items.forEach(item => {
+            const question = item.querySelector('.accordion-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+
+                items.forEach(i => i.classList.remove('active'));
+
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    });
+</script>
+

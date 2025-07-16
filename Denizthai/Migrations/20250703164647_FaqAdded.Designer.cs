@@ -3,6 +3,7 @@ using System;
 using Denizthai.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Denizthai.Migrations
 {
     [DbContext(typeof(DenizthaiDbContext))]
-    partial class DenizthaiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250703164647_FaqAdded")]
+    partial class FaqAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -174,14 +176,6 @@ namespace Denizthai.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Phone2")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("TelegramLink")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.HasKey("Id");
 
                     b.ToTable("Settings");
@@ -214,24 +208,9 @@ namespace Denizthai.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("DurationAz")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("DurationEn")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("DurationRu")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<bool>("IsPopular")
-                        .HasColumnType("boolean");
 
                     b.Property<string>("LocationAz")
                         .IsRequired()

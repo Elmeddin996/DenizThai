@@ -16,9 +16,14 @@ namespace Denizthai.Models
         public string LocationAz { get; set; }
         public string LocationEn { get; set; }
         public string LocationRu { get; set; }
+        public string DurationAz { get; set; }
+        public string DurationEn { get; set; }
+        public string DurationRu { get; set; }
+        
         public string Price { get; set; }
         public string DiscountedPrice { get; set;}
         public int CategorieId { get; set; }
+        public bool IsPopular { get; set; }
         public string Image { get; set; }
 
         [MaxFileSize(2097152)]

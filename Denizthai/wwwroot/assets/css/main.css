@@ -488,7 +488,7 @@ p {
 }
 
 .section-bg {
-  background-color: var(--bg) !important;
+    background-color: #ffffff !important;
 }
 
 .section-bg-2 {
@@ -3518,9 +3518,9 @@ p {
   }
 }
 .about-wrappper-2 .about-image .counter-box {
-  padding: 30px;
+  padding: 10px;
   right: -4%;
-  bottom: 14%;
+  bottom: 5%;
   position: absolute;
   border-radius: 12px;
   background: var(--white);

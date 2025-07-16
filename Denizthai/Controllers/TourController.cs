@@ -1,5 +1,6 @@
 ﻿using Denizthai.DAL;
 using Denizthai.Models;
+using Denizthai.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,11 +13,26 @@ namespace Denizthai.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
-        {
-            List<Tour>tours = _context.Tours.Include(x=>x.Categorie).ToList();
-            return View(tours);
-        }
+        public IActionResult Index(int? categoryId)
+{
+    var tours = _context.Tours.Include(t => t.Categorie).AsQueryable();
+
+    if (categoryId != null)
+    {
+        tours = tours.Where(t => t.CategorieId == categoryId);
+    }
+
+    var model = new TourFilterViewModel
+    {
+        Categories = _context.Categories.ToList(),
+        SelectedCategoryId = categoryId,
+        Tours = tours.ToList()
+    };
+
+    return View(model);
+}
+
+
 
         public IActionResult Detail(int id)
         {

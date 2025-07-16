@@ -45,6 +45,35 @@
     <link rel="stylesheet" href="~/style.css">
 </head>
 
+<style>
+    .whatsapp-float {
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        z-index: 999;
+        background-color: #25D366;
+        border-radius: 50%;
+        padding: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        transition: transform 0.3s ease;
+    }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-float img {
+            width: 35px;
+            height: 35px;
+            display: block;
+        }
+        @@media (max-width: 768px) {
+  .ml-mobile-20 {
+    margin-left: 60px !important;
+  }
+}
+</style>
+
 <body>
 
     <!-- Preloader Start -->
@@ -105,6 +134,15 @@
     <button id="back-top" class="back-to-top">
         <i class="fas fa-long-arrow-up"></i>
     </button>
+    @foreach (var setting in settings)
+    {
+        <a href="https://wa.me/@setting.Phone"
+           class="whatsapp-float"
+           target="_blank"
+           title="Bizimlə WhatsAppda əlaqə saxlayın">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
+        </a>
+    }
 
     <!-- Offcanvas Area Start -->
     <div class="fix-area">
@@ -125,12 +163,14 @@
                     </div>
                     <div class="mobile-menu fix mb-3"></div>
                     <div class="offcanvas__contact">
-                        <div class="social-icon d-flex align-items-center">
-                            <a href="~/#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="~/#"><i class="fab fa-twitter"></i></a>
-                            <a href="~/#"><i class="fab fa-youtube"></i></a>
-                            <a href="~/#"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
+                        @foreach (var setting in settings)
+                        {
+                            <div class="social-icon d-flex align-items-center">
+                                <a href="@setting.InstaLink"><i class="fab fa-instagram"></i></a>
+                                <a href="@setting.TelegramLink"><i class="fab fa-telegram"></i></a>
+                                <a href="https://wa.me/@setting.Phone"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -153,12 +193,14 @@
                             </li>
                         }
                     </ul>
-                    <div class="social-icon">
-                        <a href="~/#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="~/#"><i class="fab fa-instagram"></i></a>
-                        <a href="~/#"><i class="fab fa-twitter"></i></a>
-                        <a href="~/#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
+                    @foreach (var setting in settings)
+                    {
+                        <div class="social-icon">
+                            <a href="@setting.InstaLink"><i class="fab fa-instagram"></i></a>
+                            <a href="@setting.TelegramLink"><i class="fab fa-telegram"></i></a>
+                            <a href="https://wa.me/@setting.Phone"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
@@ -203,8 +245,8 @@
 
                                             </li>
                                             <li>
-                                                <a asp-action="index" asp-controller="contact">
-                                                    Əlaqə
+                                                <a asp-action="index" asp-controller="faq">
+                                                    FAQ
                                                 </a>
                                             </li>
                                         </ul>
@@ -243,193 +285,56 @@
     @RenderBody()
 
     <!-- Footer Section Start -->
-    <footer class="footer-section fix section-bg bg-cover" style="background-image: url('assets/img/footer/bg-image.jpg');">
+            <div style="height: 2px; background: linear-gradient(to right, #0d6efd, #6c757d); margin: 40px 0;"></div>
+    <footer class="footer-section fix section-bg bg-cover">
         <div class="container">
-
-            <div class="footer-wrapper">
-                <div class="row">
-                    <div class="col-xl-5 col-lg-7 col-md-12">
-                        <div class="footer-widget-items">
-                            <div class="widget-title">
-                                <a href="~/index.html" class="footer-logo">
-                                    <img src="~/assets/img/logo/ba1a8762-9bbf-4016-a1ae-e3341cb9017a.jpg" alt="img" style="width:230px">
+            <div class="footer-wrapper" style="padding:20px 0px 20px">
+                <div class="row text-center text-lg-start" style="justify-content: space-around;">
+                    <div class="col-xl-12 col-lg-12 col-md-12" style="display:contents">
+                           @foreach (var setting in settings)
+                            { 
+                                <div class="widget-title col-lg-4 mb-4 mb-lg-0" style="width:230px">
+                                    <a href="~/index.html" class="footer-logo">
+                                        <img src="~/assets/img/logo/ba1a8762-9bbf-4016-a1ae-e3341cb9017a.jpg" alt="img" style="width:230px">
+                                    </a>
+                                </div>
+                            <div class="footer-content col-lg-4 mb-4 mb-lg-0 ml-mobile-20">
+                                    <div class="contact-info-items d-flex align-items-center align-items-lg-start gap-2">
+                                        <div class="contact-items">
+                                            <div class="icon">
+                                                <img src="~/assets/img/call.png" alt="img">
+                                            </div>
+                                            <div class="content d-flex align-items-center gap-2">
+                                                <h6><a href="https://wa.me/@setting.Phone">@setting.Phone</a></h6>
+                                            </div>
+                                        </div>
+                                        <div class="contact-items d-flex align-items-center gap-2">
+                                            <div class="icon">
+                                                <img src="~/assets/img/mail.png" alt="img">
+                                            </div>
+                                            <div class="content">
+                                                <h6>
+                                                    <a href="mailto:@setting.Email"><span class="__cf_email__"> @setting.Email </span></a>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                            <!-- Sosial şəbəkələr -->
+                            <div class="social-icon d-flex flex-row gap-2" style="margin-left:40px;     padding-bottom: 15px;">
+                                <a href="@setting.InstaLink" class="text-dark d-flex align-items-center gap-2">
+                                    <i class="fab fa-instagram"></i> <span>Instagram</span>
+                                </a>
+                                <a href="@setting.TelegramLink" class="text-dark d-flex align-items-center gap-2">
+                                    <i class="fab fa-telegram"></i> <span>Telegram</span>
+                                </a>
+                                <a href="https://wa.me/@setting.Phone" class="text-dark d-flex align-items-center gap-2">
+                                    <i class="fab fa-whatsapp"></i> <span>WhatsApp</span>
                                 </a>
                             </div>
-                            <div class="footer-content">
-                                <div class="contact-info-items">
-                                    <div class="contact-items">
-                                        <div class="icon">
-                                            <img src="~/assets/img/call.png" alt="img">
-                                        </div>
-                                        <div class="content">
-                                            <span>Call Us</span>
-                                            <h6><a href="~/tel:+8809533309">+88 (09) 53 33 09</a></h6>
-                                        </div>
-                                    </div>
-                                    <div class="contact-items">
-                                        <div class="icon">
-                                            <img src="~/assets/img/mail.png" alt="img">
-                                        </div>
-                                        <div class="content">
-                                            <span>Mail Us</span>
-                                            <h6><a href="~/https://modinatheme.com/cdn-cgi/l/email-protection#3851565e57785d40595548545d165b5755"><span class="__cf_email__" data-cfemail="a8c1c6cec7e8cdd0c9c5d8c4cd86cbc7c5">[email&#160;protected]</span></a></h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h6 class="app-text">Your all-in-one travel app</h6>
-                                <div class="apps-items">
-                                    <a href="~/contact.html">
-                                        <img src="~/assets/img/apply-store.png" alt="img">
-                                    </a>
-                                    <a href="~/contact.html">
-                                        <img src="~/assets/img/play-store.jpg" alt="img">
-                                    </a>
-                                </div>
-                                <div class="social-icon">
-                                    <a href="~/#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="~/#"><i class="fab fa-instagram"></i></a>
-                                    <a href="~/#"><i class="fab fa-twitter"></i></a>
-                                    <a href="~/#"><i class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-5 col-md-4 col-sm-6">
-                        <div class="footer-widget-items">
-                            <div class="widget-title">
-                                <h3>Useful Links</h3>
-                            </div>
-                            <ul class="list-items">
-                                <li>
-                                    <a href="~/destination.html">All Destination</a>
-                                </li>
-                                <li>
-                                    <a href="~/contact.html">24/7 Support</a>
-                                </li>
-                                <li>
-                                    <a href="~/team.html">Our Team</a>
-                                </li>
-                                <li>
-                                    <a href="~/tour.html">Tour Places</a>
-                                </li>
-                                <li>
-                                    <a href="~/contact.html">Reviews</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
-                        <div class="footer-widget-items">
-                            <div class="widget-title">
-                                <h3>About Travil</h3>
-                            </div>
-                            <ul class="list-items">
-                                <li>
-                                    <a href="~/about.html">About Us</a>
-                                </li>
-                                <li>
-                                    <a href="~/contact.html">Legal Notice</a>
-                                </li>
-                                <li>
-                                    <a href="~/contact.html">Terms & Condition</a>
-                                </li>
-                                <li>
-                                    <a href="~/contact.html">Contact Us</a>
-                                </li>
-                                <li>
-                                    <a href="~/contact.html">Apple Store</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-4">
-                        <div class="footer-widget-items">
-                            <div class="widget-title">
-                                <h3>Gallery</h3>
-                            </div>
-                            <div class="footer-gallery">
-                                <div class="gallery-wrap">
-                                    <div class="gallery-item">
-                                        <div class="thumb">
-                                            <a href="~/assets/img/footer/gallery-1.jpg" class="img-popup">
-                                                <img src="~/assets/img/footer/gallery-1.jpg" alt="gallery-img">
-                                                <div class="icon">
-                                                    <i class="far fa-plus"></i>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="thumb">
-                                            <a href="~/assets/img/footer/gallery-2.jpg" class="img-popup">
-                                                <img src="~/assets/img/footer/gallery-2.jpg" alt="gallery-img">
-                                                <div class="icon">
-                                                    <i class="far fa-plus"></i>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="thumb">
-                                            <a href="~/assets/img/footer/gallery-3.jpg" class="img-popup">
-                                                <img src="~/assets/img/footer/gallery-3.jpg" alt="gallery-img">
-                                                <div class="icon">
-                                                    <i class="far fa-plus"></i>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="gallery-item">
-                                        <div class="thumb">
-                                            <a href="~/assets/img/footer/gallery-4.jpg" class="img-popup">
-                                                <img src="~/assets/img/footer/gallery-4.jpg" alt="gallery-img">
-                                                <div class="icon">
-                                                    <i class="far fa-plus"></i>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="thumb">
-                                            <a href="~/assets/img/footer/gallery-5.jpg" class="img-popup">
-                                                <img src="~/assets/img/footer/gallery-5.jpg" alt="gallery-img">
-                                                <div class="icon">
-                                                    <i class="far fa-plus"></i>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="thumb">
-                                            <a href="~/assets/img/footer/gallery-6.jpg" class="img-popup">
-                                                <img src="~/assets/img/footer/gallery-6.jpg" alt="gallery-img">
-                                                <div class="icon">
-                                                    <i class="far fa-plus"></i>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="gallery-item">
-                                        <div class="thumb">
-                                            <a href="~/assets/img/footer/gallery-7.jpg" class="img-popup">
-                                                <img src="~/assets/img/footer/gallery-7.jpg" alt="gallery-img">
-                                                <div class="icon">
-                                                    <i class="far fa-plus"></i>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="thumb">
-                                            <a href="~/assets/img/footer/gallery-8.jpg" class="img-popup">
-                                                <img src="~/assets/img/footer/gallery-8.jpg" alt="gallery-img">
-                                                <div class="icon">
-                                                    <i class="far fa-plus"></i>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="thumb">
-                                            <a href="~/assets/img/footer/gallery-9.jpg" class="img-popup">
-                                                <img src="~/assets/img/footer/gallery-9.jpg" alt="gallery-img">
-                                                <div class="icon">
-                                                    <i class="far fa-plus"></i>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+                            }
                     </div>
                 </div>
             </div>
@@ -438,29 +343,14 @@
             <div class="container">
                 <div class="footer-bottom-wrapper">
                     <p class="wow fadeInUp" data-wow-delay=".3s">
-                        © 2025 Travil LLC All rights reserved.
+                        © Created by <a href="mailto: elmaddinshm@code.edu.az">Elmeddin Mirzeyev.</a>
                     </p>
-                    <ul class="footer-menu wow fadeInUp" data-wow-delay=".5s">
-                        <li>
-                            <a href="~/contact.html">
-                                Privacy
-                            </a>
-                        </li>
-                        <li>
-                            <a href="~/contact.html">
-                                Terms
-                            </a>
-                        </li>
-                        <li>
-                            <a href="~/contact.html">
-                                Site Map
-                            </a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
     </footer>
+
+
 
     <!--<< All JS Plugins >>-->
     <script data-cfasync="false" src="~/../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>

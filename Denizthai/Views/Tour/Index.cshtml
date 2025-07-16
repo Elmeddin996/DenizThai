@@ -1,5 +1,49 @@
-﻿@model List<Tour>
- <!--  Breadcrumb Section Start -->
+﻿@model TourFilterViewModel
+
+
+
+<style>
+    .category-sidebar {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+    }
+
+    .category-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        .category-list li {
+            margin-bottom: 10px;
+        }
+
+    .category-link {
+        display: block;
+        padding: 5px 10px;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #333;
+        transition: background-color 0.2s, color 0.2s;
+        font-weight: 500;
+        background-color: transparent;
+    }
+
+        .category-link:hover {
+            background-color: #e9ecef;
+            color: #007bff;
+        }
+
+        .category-link.active {
+            background-color: #007bff;
+            color: #fff;
+            font-weight: 600;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+        }
+
+</style>
+<!--  Breadcrumb Section Start -->
 <div class="breadcrumb-wrapper section-padding  bg-cover" style="background-image: url('assets/img/breadcrumb-bg.jpg');">
     <div class="container-fluid">
         <div class="page-heading">
@@ -22,39 +66,68 @@
 </div>
 
 <!-- Tour Section Start -->
-<section class="tour-section fix section-padding">
-    <div class="container">
-        <div class="row g-4">
-        @foreach (var item in Model)
-            {
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".2s">
-                    <div class="tour-box-items mt-0">
-                        <div class="thumb">
-                            <img src="~/uploads/tours/@item.Image" alt="img">
-                        </div>
-                        <div class="content">
-                            <span>@item.Categorie.NameAz</span>
-                            <h4>
-                                <a href="@Url.Action("Detail", "Tour", new { id = item.Id })">
-                                    @item.NameAz
-                                </a>
-                            </h4>
-                            <h6> <span>$@item.DiscountedPrice</span> <del>$@item.Price</del></h6>
-                            <ul class="list">
-                                <li>
-                                    <i class="far fa-calendar"></i>
-                                    3 Days / 2 Night 
-                                </li>
-                                <li>
-                                    <i class="far fa-flag"></i>
-                                    3 Countries
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
 
-            }   
+
+<section class="tour-section fix section-padding">
+    <div class="container" style="max-width: 1340px">
+        <div class="row">
+            <!-- Sol panel: Kateqoriyalar -->
+            <div class="col-lg-3 mb-4 mb-lg-0">
+                <div class="category-sidebar p-4 shadow-sm rounded">
+                    <h5 class="mb-4 border-bottom pb-2 text-uppercase">Kateqoriyalar</h5>
+                    <ul class="category-list">
+                        <li>
+                            <a href="@Url.Action("Index", "Tour", new { categoryId = (int?)null })"
+                               class="category-link @(Model.SelectedCategoryId == null ? "active" : "")">
+                                🧭 Bütün turlar
+                            </a>
+                        </li>
+                        @foreach (var cat in Model.Categories)
+                        {
+                            <li>
+                                <a href="@Url.Action("Index", "Tour", new { categoryId = cat.Id })"
+                                   class="category-link @(cat.Id == Model.SelectedCategoryId ? "active" : "")">
+                                    @cat.NameAz
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Sağ panel: Turlar -->
+            <div class="col-lg-9">
+                <div class="row g-4">
+                    @foreach (var item in Model.Tours)
+                    {
+                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".2s">
+                            <div class="tour-box-items mt-0">
+                                <div class="thumb">
+                                    <img src="~/uploads/tours/@item.Image" alt="img" class="img-fluid rounded">
+                                </div>
+                                <div class="content">
+                                    <span>@item.Categorie.NameAz</span>
+                                    <h4>
+                                        <a href="@Url.Action("Detail", "Tour", new { id = item.Id })">
+                                            @item.NameAz
+                                        </a>
+                                    </h4>
+                                    <h6>
+                                        <span>$@item.DiscountedPrice</span>
+                                        <del>$@item.Price</del>
+                                    </h6>
+                                    <ul class="list">
+                                        <li>
+                                            <i class="far fa-calendar"></i>
+                                            @item.DurationAz
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
         </div>
     </div>
 </section>

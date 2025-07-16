@@ -1,0 +1,40 @@
+﻿@model Faq
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h1>Redaktə Et</h1>
+
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="QuestionAz">Sual Az</label>
+                <input class="form-control" placeholder="Sual Əlavə Edin" asp-for="QuestionAz">
+            </div>
+            <div class="form-group">
+                <label asp-for="QuestionRu">Sual Ru</label>
+                <input class="form-control" placeholder="Sual Əlavə Edin" asp-for="QuestionRu">
+            </div>
+            <div class="form-group">
+                <label asp-for="QuestionEn">Sual En</label>
+                <input class="form-control" placeholder="Sual Əlavə Edin" asp-for="QuestionEn">
+            </div>
+            <div class="form-group">
+                <label asp-for="AnswerAz">Cavab Az</label>
+                <input class="form-control" placeholder="Cavab Əlavə Edin" asp-for="AnswerAz">
+            </div>
+            <div class="form-group">
+                <label asp-for="AnswerRu">Cavab Ru</label>
+                <input class="form-control" placeholder="Cavab Əlavə Edin" asp-for="AnswerRu">
+            </div>
+            <div class="form-group">
+                <label asp-for="AnswerEn">Cavab En</label>
+                <input class="form-control" placeholder="Cavab Əlavə Edin" asp-for="AnswerEn">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
