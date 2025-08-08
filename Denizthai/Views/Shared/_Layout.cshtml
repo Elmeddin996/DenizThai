@@ -32,6 +32,8 @@
     <!--<< MeanMenu.css >>-->
     <link rel="stylesheet" href="~/assets/css/meanmenu.css">
     <!--<< Odometer.css >>-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" />
+
     <link rel="stylesheet" href="~/assets/css/odometer.css">
     <!--<< Swiper Bundle.css >>-->
     <link rel="stylesheet" href="~/assets/css/swiper-bundle.min.css">
@@ -150,7 +152,9 @@
             <div class="offcanvas__wrapper">
                 <div class="offcanvas__content">
                     <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+
                         <div class="offcanvas__logo">
+
                             <a asp-action="index" asp-controller="home">
                                 <img src="~/assets/img/logo/ba1a8762-9bbf-4016-a1ae-e3341cb9017a.jpg" alt="logo-img" style="width:230px">
                             </a>
@@ -183,6 +187,20 @@
         <div class="header-top-section">
             <div class="container-fluid">
                 <div class="header-top-wrapper">
+                    <div class="btn-group" role="group" aria-label="Language switch">
+                        <a class="btn btn-outline-primary d-flex align-items-center gap-2 @(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "az" ? "active" : "")"
+                           href="@Url.Action("ChangeLanguage", "Language", new { lang = "az", returnUrl = Context.Request.Path + Context.Request.QueryString })">
+                            <span class="flag-icon flag-icon-az"></span> AZ
+                        </a>
+                        <a class="btn btn-outline-primary d-flex align-items-center gap-2 @(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "en" ? "active" : "")"
+                           href="@Url.Action("ChangeLanguage", "Language", new { lang = "en", returnUrl = Context.Request.Path + Context.Request.QueryString })">
+                            <span class="flag-icon flag-icon-gb"></span> EN
+                        </a>
+                        <a class="btn btn-outline-primary d-flex align-items-center gap-2 @(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "ru" ? "active" : "")"
+                           href="@Url.Action("ChangeLanguage", "Language", new { lang = "ru", returnUrl = Context.Request.Path + Context.Request.QueryString })">
+                            <span class="flag-icon flag-icon-ru"></span> RU
+                        </a>
+                    </div>
                     <ul class="top-left">
                         @foreach (var setting in settings)
                         {
@@ -193,6 +211,7 @@
                             </li>
                         }
                     </ul>
+                    
                     @foreach (var setting in settings)
                     {
                         <div class="social-icon">
@@ -209,7 +228,9 @@
                 <div class="mega-menu-wrapper">
                     <div class="header-main">
                         <div class="header-left">
+
                             <div class="logo">
+                                 
                                 <a asp-action="index" asp-controller="home" class="header-logo">
                                     <img src="~/assets/img/logo/ba1a8762-9bbf-4016-a1ae-e3341cb9017a.jpg" alt="logo-img" style="width:230px">
                                 </a>
@@ -219,20 +240,24 @@
                             <div class="mean__menu-wrapper">
                                 <div class="main-menu">
                                     <nav id="mobile-menu">
+
+
+
+
                                         <ul>
                                             <li class="has-dropdown menu-thumb">
                                                 <a asp-action="index" asp-controller="home">
-                                                    Əsas Səhifə
+                                                    @localizer.GetLocalizedHtmlString("home")
                                                 </a>
                                             </li>
                                             <li class="has-dropdown active d-xl-none">
                                                 <a asp-action="index" asp-controller="home" class="border-none">
-                                                    Əsas Səhifə
+                                                    @localizer.GetLocalizedHtmlString("home")
                                                 </a>
                                             </li>
                                             <li>
                                                 <a asp-action="index" asp-controller="tour">
-                                                    Turlar
+                                                    @localizer.GetLocalizedHtmlString("tour")
                                                 </a>
 
                                             </li>
@@ -240,32 +265,29 @@
 
                                             <li>
                                                 <a asp-action="index" asp-controller="about">
-                                                    Haqqımızda
+                                                    @localizer.GetLocalizedHtmlString("about us")
                                                 </a>
 
                                             </li>
                                             <li>
                                                 <a asp-action="index" asp-controller="faq">
-                                                    FAQ
+                                                    @localizer.GetLocalizedHtmlString("faq")
                                                 </a>
                                             </li>
                                         </ul>
+
+                                        
                                     </nav>
-                                </div>
-                            </div>
-                            <div class="contact-items">
-                                <div class="icon">
-                                    <img src="~/assets/img/call.png" alt="img">
-                                </div>
-                                <div class="content">
-                                    <span>Call Us</span>
-                                    <h6><a href="~/tel:+8809533309">+88 (09) 53 33 09</a></h6>
                                 </div>
                             </div>
 
                             <a asp-action="index" asp-controller="contact" class="theme-btn">
-                                <span>Bizimlə Əlaqə</span> <i class="far fa-long-arrow-right"></i>
+                                <span>@localizer.GetLocalizedHtmlString("contact us")</span> <i class="far fa-long-arrow-right"></i>
                             </a>
+
+                           
+
+
                             <div class="header__hamburger d-xl-none my-auto">
                                 <div class="sidebar__toggle">
                                     <div class="header-bar">

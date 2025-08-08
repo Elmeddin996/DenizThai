@@ -1,5 +1,8 @@
 ﻿@model TourFilterViewModel
 
+@{
+    var lang = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+}
 
 
 <style>
@@ -50,14 +53,14 @@
             <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".3s">
                 <li>
                     <a asp-action="index" asp-controller="home">
-                        Əsas Səhifə
+                        @localizer.GetLocalizedHtmlString("home")
                     </a>
                 </li>
                 <li>
                     <i class="far fa-slash"></i>
                 </li>
             </ul>
-            <h1 class="wow fadeInUp" data-wow-delay=".5s">Turlarımız</h1>
+            <h1 class="wow fadeInUp" data-wow-delay=".5s">@localizer.GetLocalizedHtmlString("our tours")</h1>
         </div>
     </div>
     <div class="plane-shape float-bob-x">
@@ -74,12 +77,12 @@
             <!-- Sol panel: Kateqoriyalar -->
             <div class="col-lg-3 mb-4 mb-lg-0">
                 <div class="category-sidebar p-4 shadow-sm rounded">
-                    <h5 class="mb-4 border-bottom pb-2 text-uppercase">Kateqoriyalar</h5>
+                    <h5 class="mb-4 border-bottom pb-2 text-uppercase">@localizer.GetLocalizedHtmlString("categories")</h5>
                     <ul class="category-list">
                         <li>
                             <a href="@Url.Action("Index", "Tour", new { categoryId = (int?)null })"
                                class="category-link @(Model.SelectedCategoryId == null ? "active" : "")">
-                                🧭 Bütün turlar
+                                @localizer.GetLocalizedHtmlString("all tours")
                             </a>
                         </li>
                         @foreach (var cat in Model.Categories)
@@ -87,7 +90,9 @@
                             <li>
                                 <a href="@Url.Action("Index", "Tour", new { categoryId = cat.Id })"
                                    class="category-link @(cat.Id == Model.SelectedCategoryId ? "active" : "")">
-                                    @cat.NameAz
+                                    @(lang == "az" ? cat.NameAz :
+                                        lang == "en" ? cat.NameEn :
+                                        lang == "ru" ? cat.NameRu : cat.NameAz)
                                 </a>
                             </li>
                         }
@@ -106,10 +111,16 @@
                                     <img src="~/uploads/tours/@item.Image" alt="img" class="img-fluid rounded">
                                 </div>
                                 <div class="content">
-                                    <span>@item.Categorie.NameAz</span>
+                                    <span>
+                                         @(lang == "az" ? item.Categorie.NameAz :
+                                            lang == "en" ? item.Categorie.NameEn :
+                                            lang == "ru" ? item.Categorie.NameRu : item.Categorie.NameAz)
+                                    </span>
                                     <h4>
                                         <a href="@Url.Action("Detail", "Tour", new { id = item.Id })">
-                                            @item.NameAz
+                                            @(lang == "az" ? item.NameAz :
+                                                lang == "en" ? item.NameEn :
+                                                lang == "ru" ? item.NameRu : item.NameAz)
                                         </a>
                                     </h4>
                                     <h6>
@@ -119,7 +130,9 @@
                                     <ul class="list">
                                         <li>
                                             <i class="far fa-calendar"></i>
-                                            @item.DurationAz
+                                            @(lang == "az" ? item.DurationAz :
+                                                lang == "en" ? item.DurationEn :
+                                                lang == "ru" ? item.DurationRu : item.DurationAz)
                                         </li>
                                     </ul>
                                 </div>

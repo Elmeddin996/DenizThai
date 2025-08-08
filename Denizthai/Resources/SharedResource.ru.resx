@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="about us" xml:space="preserve">
+    <value>О нас</value>
+  </data>
+  <data name="about1" xml:space="preserve">
+    <value>Компания Denizthai была создана с целью предоставления туристам на острове Пхукет, известном как жемчужина Таиланда, услуг высокого качества.</value>
+  </data>
+  <data name="about2" xml:space="preserve">
+    <value>Уже более 5 лет мы профессионально предоставляем незабываемый отдых гостям из разных стран мира. Главная цель нашей компании — обеспечить комфорт, удовлетворение и безопасность каждого клиента, показывая красоты Таиланда на самом высоком уровне. Благодаря нашему многолетнему опыту в сфере туризма и глубокому знанию местного рынка, Denizthai сегодня стал одной из самых надежных и востребованных туристических компаний на Пхукете.</value>
+  </data>
+  <data name="about3" xml:space="preserve">
+    <value>Наша команда состоит из профессиональных гидов, ориентированных на клиентов менеджеров и сотрудников, владеющих несколькими языками. Это обеспечивает туристам как удобное общение, так и высокий уровень обслуживания.</value>
+  </data>
+  <data name="about4" xml:space="preserve">
+    <value>К нашим услугам относятся следующие:</value>
+  </data>
+  <data name="about5" xml:space="preserve">
+    <value>Организация индивидуальных и групповых туров
+Экскурсии на острова (Пхи-Пхи, остров Джеймса Бонда и др.)
+Поездки к скалистым берегам и морские прогулки
+Трансфер и транспортные услуги
+Бронирование отелей и курортов
+Программы знакомства с тайской культурой
+Предложения по СПА и массажным услугам
+
+Каждый тур и услуга тщательно подготовлены, чтобы вы могли просто наслаждаться отдыхом. Наша цель в Denizthai — не просто предоставлять услуги, но и создать для вас уютную атмосферу, как дома, в Таиланде.</value>
+  </data>
+  <data name="about6" xml:space="preserve">
+    <value>Тысячи туристов, которые доверяют нам, оставляют положительные отзывы и возвращаются к нам снова — это наша главная мотивация. Если вы хотите создать незабываемые воспоминания на тропическом раю Пхукете, команда Denizthai с большим удовольствием готова вас встретить.</value>
+  </data>
+  <data name="about7" xml:space="preserve">
+    <value>Denizthai — чувствуй себя как дома в Таиланде!</value>
+  </data>
+  <data name="adress" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="all tours" xml:space="preserve">
+    <value>🧭 Все туры</value>
+  </data>
+  <data name="categories" xml:space="preserve">
+    <value>Категории</value>
+  </data>
+  <data name="contact us" xml:space="preserve">
+    <value>Связаться с нами</value>
+  </data>
+  <data name="contact us for any help" xml:space="preserve">
+    <value>Для любой поддержки
+</value>
+  </data>
+  <data name="contact us for any help2" xml:space="preserve">
+    <value>Свяжитесь с нами прямо сейчас</value>
+  </data>
+  <data name="customer" xml:space="preserve">
+    <value>Довольные клиенты</value>
+  </data>
+  <data name="discount" xml:space="preserve">
+    <value>Цена со скидкой</value>
+  </data>
+  <data name="faq" xml:space="preserve">
+    <value>Вопросы и ответы</value>
+  </data>
+  <data name="follow us instagram" xml:space="preserve">
+    <value>Следуйте за нами в Instagram</value>
+  </data>
+  <data name="home" xml:space="preserve">
+    <value>Главная</value>
+  </data>
+  <data name="information" xml:space="preserve">
+    <value>Информация</value>
+  </data>
+  <data name="our tours" xml:space="preserve">
+    <value>Наши туры</value>
+  </data>
+  <data name="phone" xml:space="preserve">
+    <value>Контактный номер</value>
+  </data>
+  <data name="popular tours" xml:space="preserve">
+    <value>Наши популярные туры</value>
+  </data>
+  <data name="price" xml:space="preserve">
+    <value>Цена</value>
+  </data>
+  <data name="questions header" xml:space="preserve">
+    <value>Часто задаваемые вопросы</value>
+  </data>
+  <data name="send message" xml:space="preserve">
+    <value>Отправить сообщение</value>
+  </data>
+  <data name="tour" xml:space="preserve">
+    <value>Туры</value>
+  </data>
+  <data name="write us" xml:space="preserve">
+    <value>Напишите нам!</value>
+  </data>
+  <data name="write us with wp" xml:space="preserve">
+    <value>Свяжитесь с нами по WhatsApp</value>
+  </data>
+</root>

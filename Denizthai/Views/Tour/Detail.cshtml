@@ -1,42 +1,70 @@
 ﻿@model Tour
 
+@{
+    var lang = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+}
+
 <div class="marque-wrapper style-2">
     <div dir="rtl" class="swiper text-slider-2">
         <div class="swiper-wrapper slide-transtion">
             <div class="swiper-slide brand-slide-element">
                 <div class="marque-text">
                     <img src="~/assets/img/marque.png" alt="img">
-                    <h3>@Model.LocationAz</h3>
+                    <h3>
+                        @(lang == "az" ? Model.LocationAz :
+                            lang == "en" ? Model.LocationEn :
+                            lang == "ru" ? Model.LocationRu : Model.LocationAz)
+                    </h3>
                 </div>
             </div>
             <div class="swiper-slide brand-slide-element">
                 <div class="marque-text">
                     <img src="~/assets/img/marque.png" alt="img">
-                    <h3>@Model.Categorie.NameAz</h3>
+                    <h3>
+                        @(lang == "az" ? Model.Categorie.NameAz :
+                            lang == "en" ? Model.Categorie.NameEn :
+                            lang == "ru" ? Model.Categorie.NameRu : Model.Categorie.NameAz)
+                    </h3>
                 </div>
             </div>
             <div class="swiper-slide brand-slide-element">
                 <div class="marque-text">
                     <img src="~/assets/img/marque.png" alt="img">
-                    <h3>@Model.NameAz</h3>
+                    <h3>
+                        @(lang == "az" ? Model.NameAz :
+                            lang == "en" ? Model.NameEn :
+                            lang == "ru" ? Model.NameRu : Model.NameAz)
+                    </h3>
                 </div>
             </div>
             <div class="swiper-slide brand-slide-element">
                 <div class="marque-text">
                     <img src="~/assets/img/marque.png" alt="img">
-                    <h3>@Model.LocationAz</h3>
+                    <h3>
+                        @(lang == "az" ? Model.LocationAz :
+                            lang == "en" ? Model.LocationEn :
+                            lang == "ru" ? Model.LocationRu : Model.LocationAz)
+                    </h3>
                 </div>
             </div>
             <div class="swiper-slide brand-slide-element">
                 <div class="marque-text">
                     <img src="~/assets/img/marque.png" alt="img">
-                    <h3>@Model.Categorie.NameAz</h3>
+                    <h3>
+                        @(lang == "az" ? Model.Categorie.NameAz :
+                            lang == "en" ? Model.Categorie.NameEn :
+                            lang == "ru" ? Model.Categorie.NameRu : Model.Categorie.NameAz)
+                    </h3>
                 </div>
             </div>
             <div class="swiper-slide brand-slide-element">
                 <div class="marque-text">
                     <img src="~/assets/img/marque.png" alt="img">
-                    <h3>@Model.NameAz</h3>
+                    <h3>
+                        @(lang == "az" ? Model.NameAz :
+                            lang == "en" ? Model.NameEn :
+                            lang == "ru" ? Model.NameRu : Model.NameAz)
+                    </h3>
                 </div>
             </div>
         </div>
@@ -57,15 +85,25 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="details-content">
-                                    <h2 class="fw-bold mb-3">@Model.NameAz</h2>
-                                    <h4 class="fw-bold mb-3">@Model.Categorie.NameAz</h4>
-                                    <h6><strong>Qiymət:</strong> <del>@Model.Price </del></h6>
+                                    <h2 class="fw-bold mb-3">
+                                        @(lang == "az" ? Model.NameAz :
+                                            lang == "en" ? Model.NameEn :
+                                            lang == "ru" ? Model.NameRu : Model.NameAz)
+                                    </h2>
+                                    <h4 class="fw-bold mb-3">
+                                        @(lang == "az" ? Model.Categorie.NameAz :
+                                            lang == "en" ? Model.Categorie.NameEn :
+                                            lang == "ru" ? Model.Categorie.NameRu : Model.Categorie.NameAz)
+                                    </h4>
+                                    <h6><strong>@localizer.GetLocalizedHtmlString("price"):</strong> <del>@Model.Price </del></h6>
 
-                                    <h5><strong>Endirimli Qiymət:</strong> <span class="text-danger">@Model.DiscountedPrice</span></h5>
+                                    <h5><strong>@localizer.GetLocalizedHtmlString("discount"):</strong> <span class="text-danger">@Model.DiscountedPrice</span></h5>
 
                                     <span class="location-icon d-block mb-2 text-muted">
                                         <i class="far fa-map-marker-alt"></i>
-                                        @Model.LocationAz
+                                        @(lang == "az" ? Model.LocationAz :
+                                            lang == "en" ? Model.LocationEn :
+                                            lang == "ru" ? Model.LocationRu : Model.LocationAz)
                                     </span>
                                 </div>
                             </div>
@@ -95,8 +133,10 @@
                         <div class="details-content">
                           
                            
-                            <p class="mb-3">
-                                @Model.DescriptionAz
+                            <p style="white-space: pre-line; class="mb-3">
+                                @(lang == "az" ? Model.DescriptionAz :
+                                    lang == "en" ? Model.DescriptionEn :
+                                    lang == "ru" ? Model.DescriptionRu : Model.DescriptionAz)
                             </p>
                             
                          

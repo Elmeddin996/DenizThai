@@ -1,7 +1,13 @@
 ﻿@model HomeViewModel
+
 @{
     ViewData["Title"] = "Home Page";
+    
+    var lang = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+
 }
+
+
 <!-- Hero Section Start -->
 <section class="hero-section hero-4">
     <div class="array-button">
@@ -22,11 +28,21 @@
                                 <div class="col-lg-12">
                                     <div class="hero-content">
                                         <h1 data-animation="fadeInUp" data-delay="1.5s">
-                                        @item.TitleAz
+                                            @(lang == "az" ? item.TitleAz :
+                                                lang == "en" ? item.TitleEn :
+                                                lang == "ru" ? item.TitleRu : item.TitleAz)
                                         </h1>
-                                        <p data-animation="fadeInUp" data-delay="1.7s">@item.DescriptionAz</p>
+                                        <p data-animation="fadeInUp" data-delay="1.7s">
+                                            @(lang == "az" ? item.DescriptionAz :
+                                                lang == "en" ? item.DescriptionEn :
+                                                lang == "ru" ? item.DescriptionRu : item.DescriptionAz)
+                                        </p>
                                         <a href="@item.BtnUrl" class="theme-btn theme-btn-2 wow fadeInUp" data-wow-delay=".5s" style=" position: absolute;  right: 40px;  bottom: 50px;">
-                                            <span>@item.ButtonTextAz</span> <i class="far fa-long-arrow-right"></i>
+                                            <span>
+                                                @(lang == "az" ? item.ButtonTextAz :
+                                                    lang == "en" ? item.ButtonTextEn :
+                                                    lang == "ru" ? item.ButtonTextRu : item.ButtonTextAz)
+                                            </span> <i class="far fa-long-arrow-right"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -42,7 +58,7 @@
 </section>
 
 <!-- Trending Section Start -->
-<section class="trending-destinations section-padding fix">
+@* <section class="trending-destinations section-padding fix">
     <div class="container">
         <div class="section-title-area lg-center">
             <div class="section-title">
@@ -61,7 +77,7 @@
                         <a href="~/destination-details.html">
                         <i class="fas fa-arrow-right"></i>
                         </a>
-                        </div> *@
+                        </div> 
                             <ul class="destinations-content">
                                 <li class="title">
                                     <a href="#">@item.NameAz</a>
@@ -75,12 +91,13 @@
         </div>
     </div>
 </section>
-
+ *@
 <!-- Tour Section Start -->
 <section class="tour-section fix section-padding">
     <div class="container">
         <div class="section-title text-center">
-            <h2 class="wow fadeInUp" data-wow-delay=".3s">Populyar Turlarımız</h2>
+            <h2 class="wow fadeInUp" data-wow-delay=".3s">@localizer.GetLocalizedHtmlString("popular tours")</h2>
+            
         </div>
         <div class="row">
             @foreach (var item in Model.Tours.Where(t => t.IsPopular))
@@ -91,10 +108,16 @@
                                     <img src="~/uploads/tours/@item.Image" alt="img" class="img-fluid rounded">
                                 </div>
                                 <div class="content">
-                                    <span>@item.Categorie.NameAz</span>
+                                    <span>
+                                @(lang == "az" ? item.Categorie.NameAz :
+                                    lang == "en" ? item.Categorie.NameEn :
+                                    lang == "ru" ? item.Categorie.NameRu : item.Categorie.NameAz)
+                                    </span>
                                     <h4>
                                         <a href="@Url.Action("Detail", "Tour", new { id = item.Id })">
-                                            @item.NameAz
+                                    @(lang == "az" ? item.NameAz :
+                                        lang == "en" ? item.NameEn :
+                                        lang == "ru" ? item.NameRu : item.NameAz)
                                         </a>
                                     </h4>
                                     <h6>
@@ -104,7 +127,9 @@
                                     <ul class="list">
                                         <li>
                                             <i class="far fa-calendar"></i>
-                                            @item.DurationAz
+                                    @(lang == "az" ? item.DurationAz :
+                                        lang == "en" ? item.DurationEn :
+                                        lang == "ru" ? item.DurationRu : item.DurationAz)
                                         </li>
                                     </ul>
                                 </div>
@@ -119,7 +144,7 @@
 
 <!-- Instagram Section Start -->
 <div class="section-title text-center">
-    <h2 class="wow fadeInUp" data-wow-delay=".9s">Bizi İnstagramdan İzləyin</h2>
+    <h2 class="wow fadeInUp" data-wow-delay=".9s">@localizer.GetLocalizedHtmlString("follow us instagram")</h2>
 </div>
 <div class="instagram-section fix">
     <div class="swiper instagram-slider">
@@ -138,4 +163,5 @@
             }
         </div>
     </div>
+
 </div>

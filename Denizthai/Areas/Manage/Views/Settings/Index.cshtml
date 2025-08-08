@@ -2,6 +2,9 @@
 
  <div class="col-md-8">
         <h1>Sayt Məlumatları</h1>
+             <td>
+                            <a class="btn btn-warning" asp-action="edit" asp-route-id="@Model.Id">Redaktə Et</a>
+                        </td>
         <br />
         <table class="table table-bordered">
             <thead>
@@ -23,9 +26,7 @@
                         <td>@Model.Phone</td>
                         <td>@Model.Email</td>
 
-                        <td>
-                            <a class="btn btn-warning" asp-action="edit" asp-route-id="@Model.Id">Redaktə Et</a>
-                        </td>
+                       
                     </tr>
             </tbody>
         </table

@@ -26,13 +26,13 @@ namespace Denizthai.Models
         public bool IsPopular { get; set; }
         public string Image { get; set; }
 
-        [MaxFileSize(2097152)]
+        [MaxFileSize(10485760)]
         [AllowedFileTypes("image/jpeg", "image/png")]
         [NotMapped]
         public IFormFile ImageFile { get; set; }
 
         [NotMapped]
-        [MaxFileSize(2097152)]
+        [MaxFileSize(10485760)]
         [AllowedFileTypes("image/jpeg", "image/png")]
         public List<IFormFile> Images { get; set; } = new List<IFormFile>();
         [NotMapped]

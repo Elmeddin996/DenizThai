@@ -2,12 +2,12 @@
 using Denizthai.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
-namespace aammc.Controllers
+
+namespace Denizthai.Controllers
 {
 	public class AboutController : Controller
 	{
 		private readonly DenizthaiDbContext _context;
-
 
 		public AboutController(DenizthaiDbContext context)
 		{
@@ -15,7 +15,7 @@ namespace aammc.Controllers
 		}
 		public IActionResult Index()
 		{
-
+		
 			MenuViewModel model = new MenuViewModel
 			{
 				Settings = _context.Settings.FirstOrDefault(),

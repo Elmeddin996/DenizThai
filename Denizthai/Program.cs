@@ -1,12 +1,14 @@
-using Denizthai.DAL;
+﻿using Denizthai.DAL;
 using Denizthai.Models;
 using Denizthai.Services;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<DenizthaiDbContext>(opt =>
 {
     opt.UseNpgsql(builder.Configuration.GetConnectionString("Default"));
@@ -20,6 +22,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
 }).AddDefaultTokenProviders().AddEntityFrameworkStores<DenizthaiDbContext>();
 
 builder.Services.AddScoped<IEmailSender, EmailSender>();
+builder.Services.AddSingleton<LocService>();
 builder.Services.AddScoped<LayoutService>();
 
 
@@ -46,8 +49,34 @@ builder.Services.ConfigureApplicationCookie(options =>
     };
 });
 
+// 1. Localization xidmətlərini əlavə et
+//builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+builder.Services.AddLocalizationService();
+
+// 2. MVC controller və view-lar üçün localization dəstəyi əlavə et
+builder.Services.AddControllersWithViews()
+    .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+    .AddDataAnnotationsLocalization();
+
 
 var app = builder.Build();
+
+app.AddLocalization();
+
+//var supportedCultures = new[] { "az", "en", "ru" };
+
+//var localizationOptions = new RequestLocalizationOptions
+//{
+//    DefaultRequestCulture = new RequestCulture("az"),
+//    SupportedCultures = supportedCultures.Select(c => new CultureInfo(c)).ToList(),
+//    SupportedUICultures = supportedCultures.Select(c => new CultureInfo(c)).ToList()
+//};
+
+//localizationOptions.RequestCultureProviders = new[]
+//{
+//    new CookieRequestCultureProvider()
+//};
+
 
 if (!app.Environment.IsDevelopment())
 {
@@ -59,6 +88,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+//app.UseRequestLocalization(localizationOptions);
 app.UseRouting();
 
 app.UseAuthentication();
