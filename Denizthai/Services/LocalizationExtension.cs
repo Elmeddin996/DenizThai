@@ -13,15 +13,7 @@ namespace Denizthai.Services
             services.AddLocalization(options => options.ResourcesPath = "Resources");
             var assemblyName = new AssemblyName(typeof(SharedResource).GetTypeInfo().Assembly.FullName);
 
-            services.AddControllersWithViews().AddRazorRuntimeCompilation().AddViewLocalization()
-            .AddDataAnnotationsLocalization(
-                options =>
-                  options.DataAnnotationLocalizerProvider = (type, factory) =>
-                  {
-
-                      return factory.Create("SharedResource", assemblyName.Name);
-                  }
-                );
+            
         }
 
         public static void AddLocalization(this WebApplication app)
