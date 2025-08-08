@@ -164,8 +164,24 @@
                                 <i class="fas fa-times"></i>
                             </button>
                         </div>
+
                     </div>
+
                     <div class="mobile-menu fix mb-3"></div>
+                    <div class="btn-group" role="group" aria-label="Language switch">
+                        <a class="btn btn-outline-primary d-flex align-items-center gap-2 @(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "az" ? "active" : "")"
+                           href="@Url.Action("ChangeLanguage", "Language", new { lang = "az", returnUrl = Context.Request.Path + Context.Request.QueryString })">
+                            <span class="flag-icon flag-icon-az"></span> AZ
+                        </a>
+                        <a class="btn btn-outline-primary d-flex align-items-center gap-2 @(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "en" ? "active" : "")"
+                           href="@Url.Action("ChangeLanguage", "Language", new { lang = "en", returnUrl = Context.Request.Path + Context.Request.QueryString })">
+                            <span class="flag-icon flag-icon-gb"></span> EN
+                        </a>
+                        <a class="btn btn-outline-primary d-flex align-items-center gap-2 @(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "ru" ? "active" : "")"
+                           href="@Url.Action("ChangeLanguage", "Language", new { lang = "ru", returnUrl = Context.Request.Path + Context.Request.QueryString })">
+                            <span class="flag-icon flag-icon-ru"></span> RU
+                        </a>
+                    </div>
                     <div class="offcanvas__contact">
                         @foreach (var setting in settings)
                         {
@@ -239,6 +255,7 @@
                         <div class="header-right d-flex justify-content-end align-items-center">
                             <div class="mean__menu-wrapper">
                                 <div class="main-menu">
+                                   
                                     <nav id="mobile-menu">
 
 
