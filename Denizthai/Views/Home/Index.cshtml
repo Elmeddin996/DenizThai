@@ -7,6 +7,15 @@
 
 }
 
+<style>
+    .tour-img {
+        transition: transform 0.5s ease;
+    }
+
+        .tour-img:hover {
+            transform: scale(1.05);
+        }
+</style>
 
 <!-- Hero Section Start -->
 <section class="hero-section hero-4">
@@ -102,10 +111,10 @@
         <div class="row">
             @foreach (var item in Model.Tours.Where(t => t.IsPopular))
             {
-              <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".2s">
+                <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
                             <div class="tour-box-items mt-0">
                                 <div class="thumb">
-                                    <img src="~/uploads/tours/@item.Image" alt="img" class="img-fluid rounded">
+                            <img src="~/uploads/tours/@item.Image" alt="img" class="img-fluid rounded tour-img">
                                 </div>
                                 <div class="content">
                                     <span>
@@ -121,8 +130,8 @@
                                         </a>
                                     </h4>
                                     <h6>
-                                        <span>$@item.DiscountedPrice</span>
-                                        <del>$@item.Price</del>
+                                <span>@item.DiscountedPrice฿</span>
+                                <del>@item.Price฿</del>
                                     </h6>
                                     <ul class="list">
                                         <li>
@@ -153,7 +162,7 @@
             {
                 <div class="swiper-slide">
                     <div class="instagram-image">
-                        <img src="~/uploads/instaphotos/@item.Image" alt="img">
+                        <img src="~/uploads/instaphotos/@item.Image" alt="img" style="width: 100%; height: 280px; object-fit: cover;">
                         <a href="https://www.instagram.com/denizthai/" class="icon">
                             <i class="fab fa-instagram"></i>
                         </a>

@@ -5436,7 +5436,10 @@ p {
 
     .tour-box-items .thumb img {
         width: 100%;
-        height: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 10px;
+        display: block;
         border-top-left-radius: 28px;
         border-top-right-radius: 28px;
     }

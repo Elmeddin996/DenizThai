@@ -22,19 +22,32 @@
             </div>
             <div class="form-group">
                 <label asp-for="AnswerAz">Cavab Az</label>
-                <input class="form-control" placeholder="Cavab Əlavə Edin" asp-for="AnswerAz">
+                <textarea class="form-control" placeholder="Cavab Əlavə Edin" asp-for="AnswerAz"></textarea>
             </div>
             <div class="form-group">
                 <label asp-for="AnswerRu">Cavab Ru</label>
-                <input class="form-control" placeholder="Cavab Əlavə Edin" asp-for="AnswerRu">
+                <textarea class="form-control" placeholder="Cavab Əlavə Edin" asp-for="AnswerRu"></textarea>
             </div>
             <div class="form-group">
                 <label asp-for="AnswerEn">Cavab En</label>
-                <input class="form-control" placeholder="Cavab Əlavə Edin" asp-for="AnswerEn">
+                <textarea class="form-control" placeholder="Cavab Əlavə Edin" asp-for="AnswerEn"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ImageFile">Image</label>
+                <input class="form-control" asp-for="ImageFile">
+                <span class="text-danger" asp-validation-for="ImageFile"></span>
+
+            </div>
+
+            <div class="d-flex">
+                <div class="img-box" style="position:relative;margin-right:14px">
+                    <input type="hidden" value="@Model.ImageFile" name="Image">
+                    <img width="200" src="~/uploads/faqphotos/@Model.Image" />
+                </div>
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 </div>
-

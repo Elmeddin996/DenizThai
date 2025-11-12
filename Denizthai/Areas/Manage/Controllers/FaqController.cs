@@ -1,4 +1,5 @@
 ﻿using Denizthai.DAL;
+using Denizthai.Helpers;
 using Denizthai.Models;
 using Denizthai.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -41,6 +42,16 @@ namespace Denizthai.Areas.Manage.Controllers
         public IActionResult Create(Faq faq)
         {
 
+            if (faq.ImageFile == null)
+            {
+                ModelState.AddModelError("ImageFile", "ImageFile is required");
+                return View();
+            }
+
+
+            faq.Image = FileManager.Save(_env.WebRootPath, "uploads/faqphotos", faq.ImageFile);
+
+
             _context.Faqs.Add(faq);
             _context.SaveChanges();
 
@@ -70,6 +81,20 @@ namespace Denizthai.Areas.Manage.Controllers
                 return View();
             }
 
+            string oldFileName = null;
+            if (faq.ImageFile != null)
+            {
+                oldFileName = existFaq.Image;
+
+                if (faq.Image == null)
+                {
+                    faq.Image = FileManager.Save(_env.WebRootPath, "uploads/faqphotos", faq.ImageFile);
+                    existFaq.Image = faq.Image;
+                }
+                else
+                    faq.Image = FileManager.Save(_env.WebRootPath, "uploads/faqphotos", faq.ImageFile);
+            }
+
             existFaq.QuestionAz = faq.QuestionAz;
             existFaq.QuestionRu = faq.QuestionRu;
             existFaq.QuestionEn = faq.QuestionEn;
@@ -78,6 +103,9 @@ namespace Denizthai.Areas.Manage.Controllers
             existFaq.AnswerEn = faq.AnswerEn;
 
             _context.SaveChanges();
+
+            if (oldFileName != null)
+                FileManager.Delete(_env.WebRootPath, "uploads/faqphotos", oldFileName);
 
             return RedirectToAction("index");
         }

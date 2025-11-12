@@ -45,6 +45,14 @@
             box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
         }
 
+    .tour-img {
+        transition: transform 0.5s ease;
+    }
+
+    .tour-img:hover {
+        transform: scale(1.05);
+    }
+
 </style>
 <!--  Breadcrumb Section Start -->
 <div class="breadcrumb-wrapper section-padding  bg-cover" style="background-image: url('assets/img/breadcrumb-bg.jpg');">
@@ -56,9 +64,7 @@
                         @localizer.GetLocalizedHtmlString("home")
                     </a>
                 </li>
-                <li>
-                    <i class="far fa-slash"></i>
-                </li>
+               
             </ul>
             <h1 class="wow fadeInUp" data-wow-delay=".5s">@localizer.GetLocalizedHtmlString("our tours")</h1>
         </div>
@@ -81,8 +87,14 @@
                     <ul class="category-list">
                         <li>
                             <a href="@Url.Action("Index", "Tour", new { categoryId = (int?)null })"
-                               class="category-link @(Model.SelectedCategoryId == null ? "active" : "")">
+                               class="category-link @(Model.SelectedCategoryId == null && !Model.IsPopular ? "active" : "")">
                                 @localizer.GetLocalizedHtmlString("all tours")
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Tour", new { categoryId = (int?)null, popular = true })"
+                               class="category-link @(Model.IsPopular ? "active" : "")">
+                                🔥 @localizer.GetLocalizedHtmlString("popular tours")
                             </a>
                         </li>
                         @foreach (var cat in Model.Categories)
@@ -108,7 +120,7 @@
                         <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".2s">
                             <div class="tour-box-items mt-0">
                                 <div class="thumb">
-                                    <img src="~/uploads/tours/@item.Image" alt="img" class="img-fluid rounded">
+                                    <img src="~/uploads/tours/@item.Image" alt="img" class="img-fluid rounded tour-img">
                                 </div>
                                 <div class="content">
                                     <span>
@@ -124,8 +136,8 @@
                                         </a>
                                     </h4>
                                     <h6>
-                                        <span>$@item.DiscountedPrice</span>
-                                        <del>$@item.Price</del>
+                                        <span>@item.DiscountedPrice฿</span>
+                                        <del>@item.Price฿</del>
                                     </h6>
                                     <ul class="list">
                                         <li>

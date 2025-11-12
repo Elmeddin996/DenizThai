@@ -85,6 +85,14 @@
                 <span class="text-danger" asp-validation-for="DiscountedPrice"></span>
             </div>
 
+            <div class="form-group">
+                <label asp-for="SecretWord">Secret Word</label>
+                <input class="form-control" asp-for="SecretWord">
+                <span class="text-danger" asp-validation-for="SecretWord"></span>
+            </div>
+
+            
+
             <div class="form-group form-check">
                 <input type="checkbox" class="form-check-input" asp-for="IsPopular" />
                 <label class="form-check-label" asp-for="IsPopular">Is Popular</label>

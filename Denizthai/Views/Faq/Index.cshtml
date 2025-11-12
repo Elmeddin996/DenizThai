@@ -66,12 +66,15 @@
         transition: max-height 0.5s ease-in-out, padding 0.3s ease;
         padding: 0 25px;
         background-color: #fafafa;
+
     }
 
         .accordion-answer p {
             margin: 15px 0;
             color: #444;
+            white-space: pre-line;
             line-height: 1.7;
+            word-break: break-word;
         }
 
     .accordion-item.active .accordion-answer {
@@ -83,6 +86,41 @@
         transform: rotate(180deg);
         color: #004d40;
     }
+
+    .accordion-media {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.accordion-media .media-frame {
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  background: #fff;
+}
+
+.accordion-media img {
+  width: 100%;
+  max-width: 730px;     
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.4s ease;
+}
+
+/* hover zamanı kiçik zoom effekti */
+.accordion-media:hover img {
+  transform: scale(1.05);
+}
+
+/* responsive görünüşlər üçün */
+@@media (max-width: 768px) {
+  .accordion-media img {
+    max-width: 100%;
+  }
+}
 </style>
 <div class="marque-wrapper style-2">
     <div dir="rtl" class="swiper text-slider-2">
@@ -115,12 +153,23 @@
                     lang == "ru" ? item.QuestionRu : item.QuestionAz) ?
                 <span class="accordion-icon">▼</span>
             </div>
+
+            
             <div class="accordion-answer">
                 <p>
                     @(lang == "az" ? item.AnswerAz :
                         lang == "en" ? item.AnswerEn :
                         lang == "ru" ? item.AnswerRu : item.AnswerAz)
                 </p>
+
+                @if (!string.IsNullOrEmpty(item.Image))
+                {
+                    <div class="accordion-media" aria-hidden="true">
+                        <div class="media-frame">
+                            <img src="~/uploads/faqphotos/@item.Image" alt="faq image" loading="lazy" />
+                        </div>
+                    </div>
+                }
             </div>
         </div>
 

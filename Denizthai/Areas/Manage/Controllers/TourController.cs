@@ -148,6 +148,7 @@ namespace Denizthai.Areas.Manage.Controllers
             existTour.DurationRu = tour.DurationRu;
             existTour.DurationEn = tour.DurationEn;
             existTour.Price = tour.Price;
+            existTour.SecretWord = tour.SecretWord;
             existTour.DiscountedPrice = tour.DiscountedPrice;
             existTour.CategorieId = tour.CategorieId;
             existTour.IsPopular = tour.IsPopular;
