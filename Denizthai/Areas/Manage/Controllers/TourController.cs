@@ -37,13 +37,14 @@ namespace Denizthai.Areas.Manage.Controllers
 
         public IActionResult Create()
         {
-
-
             ViewBag.Categories = _context.Categories.ToList();
 
+            var tour = new Tour
+            {
+                CategoryIds = new List<int>()
+            };
 
-
-            return View();
+            return View(tour);
         }
 
         [ValidateAntiForgeryToken]
@@ -53,21 +54,43 @@ namespace Denizthai.Areas.Manage.Controllers
 
 
 
-            if (!_context.Categories.Any(x => x.Id == tour.CategorieId))
+            var selected = tour.CategoryIds ?? new List<int>();
+
+            if (!selected.Any())
             {
-                ModelState.AddModelError("CategorieId", "CategorieId is not correct");
-                return View();
+                ModelState.AddModelError("CategoryIds", "Please select at least one category.");
+                ViewBag.Categories = _context.Categories.ToList();
+                return View(tour);
+            }
+
+            if (selected.Any(id => !_context.Categories.Any(c => c.Id == id)))
+            {
+                ModelState.AddModelError("CategoryIds", "One or more selected categories are invalid.");
+                ViewBag.Categories = _context.Categories.ToList();
+                return View(tour);
+            }
+
+            tour.TourCategories = tour.TourCategories ?? new List<TourCategory>();
+
+            foreach (var categoryId in selected)
+            {
+                TourCategory tourCategory = new TourCategory
+                {
+                    CategoryId = categoryId,
+                };
+
+                tour.TourCategories.Add(tourCategory);
             }
 
             tour.Image = FileManager.Save(_env.WebRootPath, "uploads/tours", tour.ImageFile);
 
             foreach (var img in tour.Images)
             {
-                TourImage bookImage = new TourImage
+                TourImage tourImage = new TourImage
                 {
                     ImageName = FileManager.Save(_env.WebRootPath, "uploads/tours", img),
                 };
-                tour.TourImages.Add(bookImage);
+                tour.TourImages.Add(tourImage);
             }
 
             _context.Tours.Add(tour);
@@ -80,28 +103,59 @@ namespace Denizthai.Areas.Manage.Controllers
         {
             ViewBag.Categories = _context.Categories.ToList();
 
-            Tour tour = _context.Tours.Include(x => x.TourImages).FirstOrDefault(x => x.Id == id);
+            Tour tour = _context.Tours
+                .Include(x => x.TourImages)
+                .Include(x => x.TourCategories)
+                .FirstOrDefault(x => x.Id == id);
+
+            tour.CategoryIds = tour.TourCategories.Select(x => x.CategoryId).ToList();
 
             return View(tour);
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Tour tour)
         {
-
-            Tour existTour = _context.Tours.Include(x => x.TourImages).FirstOrDefault(x => x.Id == tour.Id);
+            Tour existTour = _context.Tours
+                .Include(x => x.TourImages)
+                .Include(x => x.TourCategories)
+                .FirstOrDefault(x => x.Id == tour.Id);
 
             if (existTour == null) return View("Error");
 
 
-            if (tour.CategorieId != existTour.CategorieId && !_context.Categories.Any(x => x.Id == tour.CategorieId))
+            var selectedCategoryIds = tour.CategoryIds ?? new List<int>();
+
+            
+            var validCategoryIds = _context.Categories
+                .Where(c => selectedCategoryIds.Contains(c.Id))
+                .Select(c => c.Id)
+                .ToList();
+
+           
+            if (selectedCategoryIds.Count != validCategoryIds.Count)
             {
-                ModelState.AddModelError("CategorieId", "CategorieId is not correct");
-                return View();
+                ModelState.AddModelError("CategoryIds", "Seçilmiş kateqoriyalardan bəziləri mövcud deyil.");
+                ViewBag.Categories = _context.Categories.ToList();
+                ViewBag.SelectedCategories = selectedCategoryIds;
+                return View(tour);
             }
 
+           
+            existTour.TourCategories.RemoveAll(x => !validCategoryIds.Contains(x.CategoryId));
 
+           
+            var existingIds = existTour.TourCategories.Select(x => x.CategoryId).ToHashSet();
+            var toAdd = validCategoryIds.Where(id => !existingIds.Contains(id));
+
+            foreach (var id in toAdd)
+            {
+                existTour.TourCategories.Add(new TourCategory { CategoryId = id });
+            }
+
+           
             string oldImage = null;
             if (tour.ImageFile != null)
             {
@@ -115,7 +169,6 @@ namespace Denizthai.Areas.Manage.Controllers
                 else
                     tour.Image = FileManager.Save(_env.WebRootPath, "uploads/tours", tour.ImageFile);
             }
-
 
             var selectedImageIds = tour.TourImageIds ?? new List<int>();
 
@@ -134,7 +187,6 @@ namespace Denizthai.Areas.Manage.Controllers
                 existTour.TourImages.Add(tourImage);
             }
 
-
             existTour.NameAz = tour.NameAz;
             existTour.NameRu = tour.NameRu;
             existTour.NameEn = tour.NameEn;
@@ -150,21 +202,17 @@ namespace Denizthai.Areas.Manage.Controllers
             existTour.Price = tour.Price;
             existTour.SecretWord = tour.SecretWord;
             existTour.DiscountedPrice = tour.DiscountedPrice;
-            existTour.CategorieId = tour.CategorieId;
             existTour.IsPopular = tour.IsPopular;
 
             _context.SaveChanges();
-
 
             if (oldImage != null) FileManager.Delete(_env.WebRootPath, "uploads/tours", oldImage);
 
             if (removedImages.Any())
                 FileManager.DeleteAll(_env.WebRootPath, "uploads/tours", removedImages.Select(x => x.ImageName).ToList());
 
-
             return RedirectToAction("index");
         }
-
 
         public IActionResult Delete(int id)
         {

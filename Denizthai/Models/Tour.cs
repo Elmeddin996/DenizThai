@@ -6,7 +6,7 @@ namespace Denizthai.Models
     public class Tour
 
     {
-       public int Id { get; set; }
+        public int Id { get; set; }
         public string NameAz { get; set; }
         public string NameEn { get; set; }
         public string NameRu { get; set; }
@@ -19,12 +19,11 @@ namespace Denizthai.Models
         public string DurationAz { get; set; }
         public string DurationEn { get; set; }
         public string DurationRu { get; set; }
-        
+        public int? CategorieId { get; set; }
         public string Price { get; set; }
-        public string DiscountedPrice { get; set;}
+        public string DiscountedPrice { get; set; }
         public string? SecretWord { get; set; }
 
-        public int CategorieId { get; set; }
         public bool IsPopular { get; set; }
         public string Image { get; set; }
 
@@ -39,6 +38,8 @@ namespace Denizthai.Models
         public List<IFormFile> Images { get; set; } = new List<IFormFile>();
         [NotMapped]
         public List<int> TourImageIds { get; set; } = new List<int>();
+        [NotMapped]
+        public List<int> CategoryIds { get; set; } = new List<int>();
 
         public List<TourImage> TourImages { get; set; } = new List<TourImage>();
 
@@ -46,6 +47,6 @@ namespace Denizthai.Models
 
 
 
-
+        public List<TourCategory> TourCategories { get; set; } = new List<TourCategory>();
     }
 }

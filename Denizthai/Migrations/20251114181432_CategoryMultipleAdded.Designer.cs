@@ -3,6 +3,7 @@ using System;
 using Denizthai.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Denizthai.Migrations
 {
     [DbContext(typeof(DenizthaiDbContext))]
-    partial class DenizthaiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251114181432_CategoryMultipleAdded")]
+    partial class CategoryMultipleAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,7 +46,7 @@ namespace Denizthai.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Denizthai.Models.Faq", b =>
@@ -84,7 +86,7 @@ namespace Denizthai.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Faqs", (string)null);
+                    b.ToTable("Faqs");
                 });
 
             modelBuilder.Entity("Denizthai.Models.InstaPhoto", b =>
@@ -101,7 +103,7 @@ namespace Denizthai.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("InstaPhotos", (string)null);
+                    b.ToTable("InstaPhotos");
                 });
 
             modelBuilder.Entity("Denizthai.Models.Location", b =>
@@ -130,7 +132,7 @@ namespace Denizthai.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Locations", (string)null);
+                    b.ToTable("Locations");
                 });
 
             modelBuilder.Entity("Denizthai.Models.Settings", b =>
@@ -187,7 +189,7 @@ namespace Denizthai.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Settings", (string)null);
+                    b.ToTable("Settings");
                 });
 
             modelBuilder.Entity("Denizthai.Models.Tour", b =>
@@ -198,7 +200,7 @@ namespace Denizthai.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CategorieId")
+                    b.Property<int>("CategorieId")
                         .HasColumnType("integer");
 
                     b.Property<string>("DescriptionAz")
@@ -271,7 +273,7 @@ namespace Denizthai.Migrations
 
                     b.HasIndex("CategorieId");
 
-                    b.ToTable("Tours", (string)null);
+                    b.ToTable("Tours");
                 });
 
             modelBuilder.Entity("Denizthai.Models.TourCategory", b =>
@@ -282,6 +284,9 @@ namespace Denizthai.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("CategorieId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("integer");
 
@@ -290,11 +295,11 @@ namespace Denizthai.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("CategorieId");
 
                     b.HasIndex("TourId");
 
-                    b.ToTable("TourCategories", (string)null);
+                    b.ToTable("TourCategories");
                 });
 
             modelBuilder.Entity("Denizthai.Models.TourImage", b =>
@@ -316,7 +321,7 @@ namespace Denizthai.Migrations
 
                     b.HasIndex("TourId");
 
-                    b.ToTable("TourImages", (string)null);
+                    b.ToTable("TourImages");
                 });
 
             modelBuilder.Entity("Denizthai.Web.Models.Slider", b =>
@@ -377,7 +382,7 @@ namespace Denizthai.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Sliders", (string)null);
+                    b.ToTable("Sliders");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -608,16 +613,18 @@ namespace Denizthai.Migrations
                 {
                     b.HasOne("Denizthai.Models.Categorie", "Categorie")
                         .WithMany("Tours")
-                        .HasForeignKey("CategorieId");
+                        .HasForeignKey("CategorieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Categorie");
                 });
 
             modelBuilder.Entity("Denizthai.Models.TourCategory", b =>
                 {
-                    b.HasOne("Denizthai.Models.Categorie", "Category")
+                    b.HasOne("Denizthai.Models.Categorie", "Categorie")
                         .WithMany("TourCategories")
-                        .HasForeignKey("CategoryId")
+                        .HasForeignKey("CategorieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -627,7 +634,7 @@ namespace Denizthai.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Category");
+                    b.Navigation("Categorie");
 
                     b.Navigation("Tour");
                 });

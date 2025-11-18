@@ -16,6 +16,7 @@ namespace Denizthai.DAL
         public DbSet<Location> Locations { get; set; }
         public DbSet<Categorie> Categories { get; set; }
         public DbSet<Tour> Tours { get; set; }
+        public DbSet<TourCategory> TourCategories { get; set; }
         public DbSet<TourImage> TourImages { get; set; }
         public DbSet<InstaPhoto> InstaPhotos { get; set; }
         public DbSet<Faq> Faqs { get; set; }

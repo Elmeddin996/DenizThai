@@ -8,6 +8,7 @@
         public string NameRu { get; set; }
 
         public List<Tour> Tours { get; set; }
+        public List<TourCategory> TourCategories { get; set; }=new List<TourCategory>();
 
     }
 }

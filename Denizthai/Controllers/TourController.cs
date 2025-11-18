@@ -16,11 +16,15 @@ namespace Denizthai.Controllers
         }
         public IActionResult Index(int? categoryId, bool popular = false)
         {
-            var tours = _context.Tours.Include(t => t.Categorie).AsQueryable();
+            var tours = _context.Tours
+                .Include(t => t.TourCategories)
+                    .ThenInclude(tc => tc.Category)
+                .AsQueryable();
 
             if (categoryId != null)
             {
-                tours = tours.Where(t => t.CategorieId == categoryId);
+                tours = tours.Where(t => t.TourCategories
+                    .Any(tc => tc.CategoryId == categoryId));
             }
 
             if (popular)
@@ -33,7 +37,7 @@ namespace Denizthai.Controllers
                 Categories = _context.Categories.ToList(),
                 SelectedCategoryId = categoryId,
                 Tours = tours.ToList(),
-                 IsPopular = popular
+                IsPopular = popular
             };
 
             return View(model);
@@ -43,7 +47,14 @@ namespace Denizthai.Controllers
 
         public IActionResult Detail(int id)
         {
-            Tour tour = _context.Tours.Include(x => x.Categorie).Include(t => t.TourImages).FirstOrDefault(t => t.Id == id);
+            var tour = _context.Tours
+                .AsNoTracking()
+                .Include(t => t.TourCategories)
+                    .ThenInclude(tc => tc.Category)   
+                .Include(t => t.TourImages)
+                .FirstOrDefault(t => t.Id == id);
+
+            if (tour == null) return NotFound();
 
             return View(tour);
         }

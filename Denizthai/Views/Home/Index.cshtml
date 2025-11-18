@@ -15,6 +15,15 @@
         .tour-img:hover {
             transform: scale(1.05);
         }
+
+    .category-text {
+        display: inline-block;
+        max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+    }
 </style>
 
 <!-- Hero Section Start -->
@@ -118,10 +127,18 @@
                                 </div>
                                 <div class="content">
                                     <span>
-                                @(lang == "az" ? item.Categorie.NameAz :
-                                    lang == "en" ? item.Categorie.NameEn :
-                                    lang == "ru" ? item.Categorie.NameRu : item.Categorie.NameAz)
-                                    </span>
+                                @{
+                                    var cats = item.TourCategories?
+                                    .Select(tc => tc.Category)
+                                    .Where(c => c != null)
+                                    .ToList() ?? new List<Categorie>();
+
+                                    var catsDisplay = cats.Count == 0 ? "" : string.Join(", ",
+                                    cats.Select(c => lang == "az" ? c.NameAz :
+                                    lang == "en" ? c.NameEn :
+                                    lang == "ru" ? c.NameRu : c.NameAz));
+                                }
+                                <span class="category-text">@(string.IsNullOrEmpty(catsDisplay) ? "" : catsDisplay)</span>
                                     <h4>
                                         <a href="@Url.Action("Detail", "Tour", new { id = item.Id })">
                                     @(lang == "az" ? item.NameAz :

@@ -19,7 +19,8 @@ namespace Denizthai.Controllers
             HomeViewModel model = new HomeViewModel
             {
                 Locations =_context.Locations.ToList(),
-                Tours = _context.Tours.Include(t=>t.Categorie).ToList(),
+                Tours = _context.Tours.Include(t => t.TourCategories)
+                    .ThenInclude(tc => tc.Category).ToList(),
                 InstaPhotos = _context.InstaPhotos.ToList(),
                 Sliders = _context.Sliders.ToList()
             };
