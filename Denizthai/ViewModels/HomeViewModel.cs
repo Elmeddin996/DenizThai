@@ -7,6 +7,7 @@ namespace Denizthai.ViewModels
     {
         public List<Slider> Sliders { get; set;}
         public List<Tour> Tours { get; set;}
+        public List<Categorie> Categories { get; set; }
         public List<Location> Locations { get; set;}
         public List<InstaPhoto> InstaPhotos { get; set;}
     }

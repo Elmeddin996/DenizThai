@@ -8,7 +8,7 @@ namespace Denizthai.Models
         public int Id { get; set; }
         public string Image { get; set; }
 
-        [MaxFileSize(2097152)]
+        [MaxFileSize(100 * 1024 * 1024)]
         [AllowedFileTypes("image/jpeg", "image/png")]
         [NotMapped]
         public IFormFile ImageFile { get; set; }

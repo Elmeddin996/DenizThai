@@ -22,7 +22,8 @@ namespace Denizthai.Controllers
                 Tours = _context.Tours.Include(t => t.TourCategories)
                     .ThenInclude(tc => tc.Category).ToList(),
                 InstaPhotos = _context.InstaPhotos.ToList(),
-                Sliders = _context.Sliders.ToList()
+                Sliders = _context.Sliders.ToList(),
+                Categories=_context.Categories.ToList(),
             };
             return View(model);
         }

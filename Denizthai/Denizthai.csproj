@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="App_Data\**" />
+    <Content Remove="App_Data\**" />
+    <EmbeddedResource Remove="App_Data\**" />
+    <None Remove="App_Data\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Google.Analytics.Data.V1Beta" Version="2.0.0-beta09" />
     <PackageReference Include="MailKit" Version="4.12.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.36" />
@@ -23,10 +30,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="wwwroot\uploads\locations\" />
     <Folder Include="wwwroot\uploads\instaphotos\" />
     <Folder Include="wwwroot\uploads\faqphotos\" />
+    <Folder Include="wwwroot\uploads\categories\" />
     <Folder Include="wwwroot\uploads\sliders\" />
     <Folder Include="wwwroot\uploads\tours\" />
   </ItemGroup>

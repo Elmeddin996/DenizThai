@@ -2,6 +2,7 @@
 using Denizthai.Helpers;
 using Denizthai.Models;
 using Denizthai.ViewModels;
+using Denizthai.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -40,6 +41,8 @@ namespace Denizthai.Areas.Manage.Controllers
         [HttpPost]
         public IActionResult Create(Categorie categorie)
         {
+            categorie.Image = FileManager.Save(_env.WebRootPath, "uploads/categories", categorie.ImageFile);
+
 
             _context.Categories.Add(categorie);
             _context.SaveChanges();
@@ -64,17 +67,37 @@ namespace Denizthai.Areas.Manage.Controllers
 
             if (existCategorie == null) return View("Error");
 
+
             if (categorie.NameAz != existCategorie.NameAz && _context.Categories.Any(x => x.NameAz == categorie.NameAz))
             {
                 ModelState.AddModelError("NameAz", "Category Name is already taken");
                 return View();
             }
 
+            string oldFileName = null;
+            if (categorie.ImageFile != null)
+            {
+                oldFileName = existCategorie.Image;
+
+                if (categorie.Image == null)
+                {
+                    categorie.Image = FileManager.Save(_env.WebRootPath, "uploads/categories", categorie.ImageFile);
+                    existCategorie.Image = categorie.Image;
+                }
+                else
+                    categorie.Image = FileManager.Save(_env.WebRootPath, "uploads/categories", categorie.ImageFile);
+            }
+
+
             existCategorie.NameAz= categorie.NameAz;
             existCategorie.NameRu= categorie.NameRu;
             existCategorie.NameEn= categorie.NameEn;
 
             _context.SaveChanges();
+
+            if (oldFileName != null)
+                FileManager.Delete(_env.WebRootPath, "uploads/categories", oldFileName);
+
 
             return RedirectToAction("index");
         }

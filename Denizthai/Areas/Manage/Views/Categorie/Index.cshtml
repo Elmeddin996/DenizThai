@@ -31,6 +31,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Kategoriya Adı</th>
+                     <th scope="col">Şəkil</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,6 +42,7 @@
                     <tr>
                         <th scope="row">@order</th>
                         <td>@item.NameAz</td>
+                        <td><img width="50" src="~/uploads/categories/@item.Image" /></td>
                         <td>
                             <a class="btn btn-warning" asp-action="edit" asp-route-id="@item.Id">Edit</a>
                              

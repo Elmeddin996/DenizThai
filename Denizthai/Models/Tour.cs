@@ -23,17 +23,19 @@ namespace Denizthai.Models
         public string Price { get; set; }
         public string DiscountedPrice { get; set; }
         public string? SecretWord { get; set; }
+        public string? YoutubeUrl { get; set; }
+
 
         public bool IsPopular { get; set; }
         public string Image { get; set; }
 
-        [MaxFileSize(10485760)]
+        [MaxFileSize(100 * 1024 * 1024)]
         [AllowedFileTypes("image/jpeg", "image/png")]
         [NotMapped]
         public IFormFile ImageFile { get; set; }
 
         [NotMapped]
-        [MaxFileSize(10485760)]
+        [MaxFileSize(100 * 1024 * 1024)]
         [AllowedFileTypes("image/jpeg", "image/png")]
         public List<IFormFile> Images { get; set; } = new List<IFormFile>();
         [NotMapped]
